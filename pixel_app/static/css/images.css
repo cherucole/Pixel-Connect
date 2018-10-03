@@ -1,0 +1,34 @@
+h1
+{
+  font-family: 'Dancing Script', cursive;
+}
+
+h2{
+font-family: 'Slabo 27px', serif;
+
+}
+
+body{
+color:red;
+}
+
+
+.modal-backdrop.show {
+    opacity: 0.8;
+}
+
+
+@media (min-width: 576px) {
+
+  .modal-dialog {  max-width:none;}
+}
+
+.modal-dialog {
+   width: 60%;
+  height: 60%;
+}
+
+.modal-body {
+   height: auto;
+  min-height: 100%;
+}
