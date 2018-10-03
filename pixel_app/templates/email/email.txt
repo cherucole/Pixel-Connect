@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Get the best experience using Pixel-Connect. Find friends from your area and share photos!

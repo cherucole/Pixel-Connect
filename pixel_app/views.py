@@ -1,7 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import  *
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from .forms import *
+
+import datetime as dt
+from django.http import HttpResponse,Http404,HttpResponseRedirect
+from django.shortcuts import render,redirect
+from .models import *
+from .forms import *
+from .email import *
 
 def sample_display(request):
     message="This is to confirm my page is displaying shit"
