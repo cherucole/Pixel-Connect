@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 {% block content %}
 {{ block.super}}
-{% for comment in comments %}
+{% for comment in post.comments.all %}
     <div class="comment">
         <div class="date">{{ comment.created_date }}</div>
         <strong>{{ comment.author }}</strong>

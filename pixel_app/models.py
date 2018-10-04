@@ -35,6 +35,7 @@ class Comment(models.Model):
 
     @classmethod
     def get_comments(cls, id):
+
         comments = Comment.objects.filter(id=id)
         return comments
 
