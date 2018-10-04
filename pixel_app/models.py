@@ -26,7 +26,7 @@ class Comment(models.Model):
     post_id = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='posts')
 
     def __str__(self):
-        return self.name
+        return self.comment
 
 
 class Post(models.Model):
