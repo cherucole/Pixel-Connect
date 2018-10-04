@@ -1,5 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
+import datetime as dt
+
 
 # Create your models here.
 
@@ -19,7 +21,7 @@ class User(models.Model):
         ordering = ['username']
 
 class Comment(models.Model):
-    comment = models.CharField(max_length=30)
+    comment = models.CharField(max_length=30, blank=True)
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
     post_id = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='posts')
 
@@ -34,9 +36,8 @@ class Post(models.Model):
     likes=models.IntegerField()
     comments = models.ForeignKey(Comment,on_delete=models.CASCADE)
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
-
-
     # pub_date = models.DateTimeField(auto_now_add=True)
+
     @classmethod
     def all_posts(cls):
         posts = cls.objects.all()
