@@ -8,6 +8,8 @@ urlpatterns=[
 
     url(r'^$', views.homepage, name='sample'),
     url(r'^post/(?P<id>\d+)/comment/$', views.add_comment, name='add_comment'),
+    url(r'^post/(?P<id>\d+)/comment/$', views.like_post, name='like_post'),
+
 
 
     # url(r'^search/', views.search_results, name='search_results'),

@@ -12,3 +12,9 @@ class NewsLetterForm(forms.Form):
 #         widgets = {
 #             'tags': forms.CheckboxSelectMultiple(),
 #         }
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ('user_id', 'comment',)

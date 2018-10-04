@@ -16,12 +16,25 @@ from .email import *
 
 def homepage(request):
     posts = Post.all_posts()
+    # comments=Comment.get_comments(id=id)
 
 
     return render(request, 'images/homepage.html', { "posts":posts })
 
 
-def add_comment(request):
+def add_comment(request, id):
+    posts = Post.all_posts()
+
+    if request.GET.get("id"):
+        posts = Post.show_by_id(request.GET.get("id"))
+
+    comments=Comment.get_comments(id=id)
+
+    return render(request, 'images/ind_post.html', {  "comments":comments , "posts":posts})
+
+
+def like_post(request, id):
+
 
 
     return render(request, )

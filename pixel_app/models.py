@@ -33,6 +33,11 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
 
+    @classmethod
+    def get_comments(cls, id):
+        comments = Comment.objects.filter(id=id)
+        return comments
+
 
 class Post(models.Model):
     image = models.ImageField(upload_to='images/', blank=True)
@@ -46,6 +51,11 @@ class Post(models.Model):
     @classmethod
     def all_posts(cls):
         posts = cls.objects.all()
+        return posts
+
+    @classmethod
+    def show_by_id(cls, id):
+        posts = cls.objects.filter(id=id)
         return posts
 
 

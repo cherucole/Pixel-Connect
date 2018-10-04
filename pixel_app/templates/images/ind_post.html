@@ -1,0 +1,14 @@
+{%extends 'images/base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+{{ block.super}}
+{% for comment in comments %}
+    <div class="comment">
+        <div class="date">{{ comment.created_date }}</div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+{% endblock %}
