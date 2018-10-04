@@ -32,9 +32,9 @@ class Comment(models.Model):
 class Post(models.Model):
     image = models.ImageField(upload_to='images/', blank=True)
     # name = models.CharField(max_length=30)
-    caption = HTMLField()
+    caption = HTMLField(blank=True)
     likes=models.IntegerField()
-    comments = models.ForeignKey(Comment,on_delete=models.CASCADE)
+    comments = models.ForeignKey(Comment,on_delete=models.CASCADE, null=True, blank=True)
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
     # pub_date = models.DateTimeField(auto_now_add=True)
 
