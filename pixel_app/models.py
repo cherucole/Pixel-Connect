@@ -1,6 +1,5 @@
 from django.db import models
 from tinymce.models import HTMLField
-from .models import *
 
 # Create your models here.
 
@@ -19,6 +18,15 @@ class User(models.Model):
     class Meta:
         ordering = ['username']
 
+class Comment(models.Model):
+    comment = models.CharField(max_length=30)
+    user_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    post_id = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='posts')
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     image = models.ImageField(upload_to='images/', blank=True)
     # name = models.CharField(max_length=30)
@@ -34,14 +42,6 @@ class Post(models.Model):
         posts = cls.objects.all()
         return posts
 
-
-class Comment(models.Model):
-    comment = models.CharField(max_length=30)
-    user_id = models.ForeignKey(User,on_delete=models.CASCADE)
-    post_id = models.ForeignKey(Post,on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
 
 class Likes(models.Model):
 	post_id = models.IntegerField()
