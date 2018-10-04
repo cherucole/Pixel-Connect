@@ -6,7 +6,7 @@ from . import views
 urlpatterns=[
 
 
-    url(r'^$', views.sample_display, name='sample'),
+    url(r'^$', views.homepage, name='sample'),
 
     # url(r'^search/', views.search_results, name='search_results'),
     # url(r'^location/', views.my_locations, name='location_results')

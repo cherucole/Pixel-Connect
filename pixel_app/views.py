@@ -8,7 +8,14 @@ from .models import *
 from .forms import *
 from .email import *
 
-def sample_display(request):
-    message="This is to confirm my page is displaying shit"
+# def sample_display(request):
+#     message="This is to confirm my page is displaying shit"
+#
+#     return render(request, 'images/homepage.html', {"message":message })
 
-    return render(request, 'images/homepage.html', {"message":message })
+
+def homepage(request):
+    posts = Post.all_posts()
+
+
+    return render(request, 'images/homepage.html', { "posts":posts })
