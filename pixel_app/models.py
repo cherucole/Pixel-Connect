@@ -25,6 +25,11 @@ class Comment(models.Model):
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
     post_id = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='posts')
 
+
+
+    def save_comment(self):
+        self.save()
+
     def __str__(self):
         return self.comment
 

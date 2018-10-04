@@ -7,6 +7,8 @@ urlpatterns=[
 
 
     url(r'^$', views.homepage, name='sample'),
+    url(r'^post/(?P<id>\d+)/comment/$', views.add_comment, name='add_comment'),
+
 
     # url(r'^search/', views.search_results, name='search_results'),
     # url(r'^location/', views.my_locations, name='location_results')

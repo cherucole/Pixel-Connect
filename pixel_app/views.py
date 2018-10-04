@@ -19,3 +19,9 @@ def homepage(request):
 
 
     return render(request, 'images/homepage.html', { "posts":posts })
+
+
+def add_comment(request):
+
+
+    return render(request, )

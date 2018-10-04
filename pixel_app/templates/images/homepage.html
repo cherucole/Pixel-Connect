@@ -3,6 +3,23 @@
 {% block content %}
 {{ block.super}}
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+
+
 <div class="container">
 
     <h1 style="text-align:center; color:#0d47a1" class="display-3"> Pixel-Connect</h1>
@@ -21,7 +38,18 @@
 
   <div class="card border-secondary">
     <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
+<hr>
+      <a class="btn btn-default" href="{% url 'add_comment' id=image.id %}"><i class="far fa-heart"></i></a>
 
+{% for comment in post.comments.all %}
+    <div class="comment">
+        <div class="date">{{ comment.created_date }}</div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
   </div>
 
     <!-- Modal -->
@@ -80,5 +108,7 @@
 
 </script>
 </div>
+</body>
+</html>
 
 {% endblock %}
