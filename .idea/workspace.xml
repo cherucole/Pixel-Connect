@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67718250-56c4-4a6a-9af6-632fba0e1b64" name="Default Changelist" comment="" />
+    <list default="true" id="67718250-56c4-4a6a-9af6-632fba0e1b64" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/pixel_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pixel_app/templates/images/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/templates/images/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pixel_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,27 +47,27 @@
           <entry key="css" value="17" />
           <entry key="env" value="16" />
           <entry key="gitignore" value="23" />
-          <entry key="html" value="324" />
-          <entry key="py" value="963" />
+          <entry key="html" value="356" />
+          <entry key="py" value="1004" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="17" />
-          <entry key="HTML" value="324" />
+          <entry key="HTML" value="356" />
           <entry key="PLAIN_TEXT" value="54" />
-          <entry key="Python" value="963" />
+          <entry key="Python" value="1004" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pixel_app/templates/images/homepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+            <state relative-caret-position="361">
+              <caret line="54" column="44" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="e#1188#1195#1" expanded="true" />
@@ -93,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pixel_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="25" column="17" selection-start-line="25" selection-end-line="26" />
+            <state relative-caret-position="157">
+              <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -123,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pixel_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="40" lean-forward="true" selection-end-line="64" selection-end-column="43" />
+            <state relative-caret-position="101">
+              <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -190,12 +194,12 @@
         <option value="$PROJECT_DIR$/pixel_project/settings.py" />
         <option value="$PROJECT_DIR$/pixel_app/templates/images/base.html" />
         <option value="$PROJECT_DIR$/pixel_app/urls.py" />
-        <option value="$PROJECT_DIR$/pixel_app/views.py" />
         <option value="$PROJECT_DIR$/pixel_app/templates/navbar.html" />
         <option value="$PROJECT_DIR$/pixel_app/templates/images/ind_post.html" />
-        <option value="$PROJECT_DIR$/pixel_app/templates/images/homepage.html" />
         <option value="$PROJECT_DIR$/pixel_app/forms.py" />
         <option value="$PROJECT_DIR$/pixel_app/models.py" />
+        <option value="$PROJECT_DIR$/pixel_app/views.py" />
+        <option value="$PROJECT_DIR$/pixel_app/templates/images/homepage.html" />
       </list>
     </option>
   </component>
@@ -309,13 +313,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="63" width="1440" height="773" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.7900147" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.16740088" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32892805" />
@@ -484,16 +489,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pixel_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="25" column="17" selection-start-line="25" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pixel_app/templates/images/ind_post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
@@ -518,23 +513,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pixel_app/templates/images/homepage.html">
+    <entry file="file://$PROJECT_DIR$/pixel_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+        <state relative-caret-position="101">
+          <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
           <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#1188#1195#1" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pixel_app/models.py">
+    <entry file="file://$PROJECT_DIR$/pixel_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="40" lean-forward="true" selection-end-line="64" selection-end-column="43" />
+        <state relative-caret-position="157">
+          <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pixel_app/templates/images/homepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="54" column="44" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#1188#1195#1" expanded="true" />
           </folding>
         </state>
       </provider>

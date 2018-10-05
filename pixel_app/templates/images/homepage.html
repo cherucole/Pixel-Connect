@@ -38,6 +38,8 @@
 
   <div class="card border-secondary">
                   <p>{{image.user | safe}} </p>
+                        <p>{{image.comment | safe}} </p>
+
 
     <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
 <hr>
@@ -50,7 +52,7 @@
 
 {% for comment in comments %}
     <div class="comment">
-        <div class="date">{{ comment.created_date }}</div>
+        <div class="date">{{ comment.comment }}</div>
         <strong>{{ comment.author }}</strong>
         <p>{{ comment.text|linebreaks }}</p>
     </div>

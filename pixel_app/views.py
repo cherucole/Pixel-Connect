@@ -16,10 +16,10 @@ from .email import *
 
 def homepage(request):
     posts = Post.all_posts()
-    # comments=Comment.get_comments(id=id)
+    comments=Comment.objects.all()
 
 
-    return render(request, 'images/homepage.html', { "posts":posts })
+    return render(request, 'images/homepage.html', { "posts":posts , "comments":comments})
 
 
 def add_comment(request, id):

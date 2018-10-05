@@ -33,9 +33,14 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
 
+    # @classmethod
+    # def get_comments(cls, id):
+    #
+    #     comments = Comment.objects.filter(id=id)
+    #     return comments
+
     @classmethod
     def get_comments(cls, id):
-
         comments = Comment.objects.filter(id=id)
         return comments
 
