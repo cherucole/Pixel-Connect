@@ -37,7 +37,8 @@
       {% for image in posts %}
 
   <div class="card border-secondary">
-                  <p>{{image.user | safe}} </p>
+                  <p>{{image.user_profile.username | safe}} </p>
+
                         <!--<p>{{image.comments.all}} </p>-->
       {% for comment in image.comments.all %}
 

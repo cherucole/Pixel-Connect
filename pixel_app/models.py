@@ -1,24 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 import datetime as dt
 
 
 # Create your models here.
 
-class User(models.Model):
-    username = models.CharField(max_length=30)
+class Profile(models.Model):
     bio = HTMLField()
-    email= models.EmailField()
     avatar = models.ImageField(upload_to='images/', blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
-        return self.username
+        return self.user
 
-    def save_user(self):
+    def save_profile(self):
         self.save()
 
     class Meta:
-        ordering = ['username']
+        ordering = ['user']
 
 class Comment(models.Model):
     comment = models.CharField(max_length=30, blank=True)
@@ -49,7 +49,7 @@ class Post(models.Model):
     caption = HTMLField(blank=True)
     likes=models.IntegerField()
     opinions = models.ForeignKey(Comment,on_delete=models.CASCADE, null=True, blank=True)
-    user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts')
+    user_profile = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts')
     date = models.DateTimeField(auto_now_add=True)
 
     @classmethod

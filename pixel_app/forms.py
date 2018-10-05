@@ -18,3 +18,14 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('user', 'comment',)
+
+class NewProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = "__all__"
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = "__all__"
+
