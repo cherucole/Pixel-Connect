@@ -22,8 +22,8 @@ class User(models.Model):
 
 class Comment(models.Model):
     comment = models.CharField(max_length=30, blank=True)
-    user_id = models.ForeignKey(User,on_delete=models.CASCADE)
-    post_id = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='posts')
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    imagecommented = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='comments')
 
 
 
@@ -45,9 +45,9 @@ class Post(models.Model):
     # name = models.CharField(max_length=30)
     caption = HTMLField(blank=True)
     likes=models.IntegerField()
-    comments = models.ForeignKey(Comment,on_delete=models.CASCADE, null=True, blank=True)
-    user_id = models.ForeignKey(User,on_delete=models.CASCADE)
-    # pub_date = models.DateTimeField(auto_now_add=True)
+    opinions = models.ForeignKey(Comment,on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts')
+    date = models.DateTimeField(auto_now_add=True)
 
     @classmethod
     def all_posts(cls):
@@ -61,6 +61,5 @@ class Post(models.Model):
 
 
 class Likes(models.Model):
-	post_id = models.IntegerField()
+	post = models.IntegerField()
 	liker = models.CharField(max_length=20)
-
