@@ -1,0 +1,38 @@
+{%extends 'images/base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<br>
+<br>
+<div class="container">
+
+  <div class="card-columns">
+
+    <div class="card border-secondary">
+      <img class="card-img-top" class="img-responsive" src="{{profile.profile_photo.url}}" size="">
+    <div class="card-footer">
+      <p>{{profile.user}}</p>
+      <p>{{profile.bio}}</p>
+      </div>
+    </div>
+    {% for image in images %}
+      <div class="card mx-auto" style="max-width:50rem; margin-top:50px;">
+      <div class="card-header"><img class="img-circle" src="{{image.profile.profile_photo.url}}" style="height:40px;margin-top:10px;margin-bottom:10px;">
+        <a href="/accounts/profile/{{user.id}}">
+        <label>{{image.user}}</label></div></a>
+
+        <img src="{{image.insta_image.url}}" class="card-img-top">
+        <div class="card-body">
+        <div class="header"><a href="#"><i class="fas fa-heart" style="margin-right:10px;"></i></a><a href="#"><i class="far fa-comment"></i></a></div>
+        <div class="more-section">
+          <label>10 Likes</label>
+          <p><strong>{{image.user}} </strong>{{image.caption}}</p>
+      </div>
+    </div>
+    </div>
+    {%endfor%}
+
+
+</div>
+
+{% endblock %}

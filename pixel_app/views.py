@@ -77,6 +77,33 @@ def upload_image(request):
 #     else:
 #         form = NewProfileForm()
 #     return render(request, 'new_profile.html', {"form": form})
+
+
+def profile(request, username):
+    profile = User.objects.get(username=username)
+    try:
+        profile_info = Profile.get_profile(profile.id)
+    except:
+        profile_info = Profile.filter_by_id(profile.id)
+    images = Post.get_profile_image(profile.id)
+    title = f'@{profile.username}'
+    return render(request, 'images/profile.html', {'title':title, 'profile':profile, 'profile_info':profile_info, 'images':images})
+
+
+@login_required(login_url='/accounts/login/')
+def add_profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.editor = current_user
+            profile.save()
+        return redirect('homepage')
+
+    else:
+        form = NewProfileForm()
+    return render(request, 'images/new_profile.html', {"form": form})
 #
 # @login_required(login_url='/accounts/login/')
 # def update_image(request):

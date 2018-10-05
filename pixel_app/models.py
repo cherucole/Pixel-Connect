@@ -17,6 +17,11 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
+    @classmethod
+    def get_profile(cls, id):
+        profile = Profile.objects.get(user=id)
+        return profile
+
     class Meta:
         ordering = ['user']
 
@@ -57,9 +62,14 @@ class Post(models.Model):
         posts = cls.objects.all()
         return posts
 
+
     @classmethod
-    def show_by_id(cls, id):
-        posts = cls.objects.filter(id=id)
+    def get_user_images(cls, profile_id):
+        images=Post.objects.filter(profile_id=id)
+
+    @classmethod
+    def get_profile_image(cls, profile):
+        posts = Post.objects.filter(profile__pk=profile)
         return posts
 
 

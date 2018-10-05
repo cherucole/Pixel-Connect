@@ -11,9 +11,9 @@ urlpatterns=[
     url(r'^post/(?P<id>\d+)/comment/$', views.like_post, name='like_post'),
     url(r'^upload$', views.upload_image, name='upload'),
     #
-    # url(r'^accounts/profile/(\d+)', views.profile, name='profile'),
+    url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
     # url(r'^search/', views.search_results, name='search_results'),
-    # url(r'^new/profile$', views.add_profile, name='add_profile'),
+    url(r'^new/profile$', views.add_profile, name='add_profile'),
 
 
     # url(r'^search/', views.search_results, name='search_results'),
