@@ -6,10 +6,14 @@ from . import views
 urlpatterns=[
 
 
-    url(r'^$', views.homepage, name='sample'),
+    url(r'^$', views.homepage, name='homepage'),
     url(r'^post/(?P<id>\d+)/comment/$', views.add_comment, name='add_comment'),
     url(r'^post/(?P<id>\d+)/comment/$', views.like_post, name='like_post'),
-
+    url(r'^upload$', views.upload_image, name='upload'),
+    #
+    # url(r'^accounts/profile/(\d+)', views.profile, name='profile'),
+    # url(r'^search/', views.search_results, name='search_results'),
+    # url(r'^new/profile$', views.add_profile, name='add_profile'),
 
 
     # url(r'^search/', views.search_results, name='search_results'),

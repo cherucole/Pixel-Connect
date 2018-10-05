@@ -21,7 +21,7 @@ class CommentForm(forms.ModelForm):
 
 class NewProfileForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = Profile
         fields = "__all__"
 
 class UploadForm(forms.ModelForm):

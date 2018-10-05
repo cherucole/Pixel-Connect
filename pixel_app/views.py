@@ -47,6 +47,22 @@ def like_post(request, id):
 
     return render(request, )
 
+
+@login_required(login_url='/accounts/login/')
+def upload_image(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+        return redirect('homepage')
+
+    else:
+        form = UploadForm()
+    return render(request, 'images/upload.html', {"form": form})
+
 # @login_required(login_url='/accounts/login/')
 # def add_profile(request):
 #     current_user = request.user
