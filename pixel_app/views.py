@@ -21,7 +21,26 @@ def homepage(request):
     posts = Post.all_posts()
     comments=Comment.objects.all()
 
-    return render(request, 'images/homepage.html', { "posts":posts , "comments":comments})
+    current_user = request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = current_user
+            comment.save()
+        return redirect('homepage')
+
+    else:
+        form = CommentForm()
+
+
+    # form=CommentForm
+    context =  {
+        "form": form,
+        "posts":posts ,
+        "comments":comments
+    }
+    return render(request, 'images/homepage.html', context)
 
 
 @login_required
@@ -120,16 +139,33 @@ def add_profile(request):
 #         form = UploadForm()
 #     return render(request, 'upload.html', {"form": form})
 #
+
+
+@login_required(login_url='/accounts/login/')
+def add_comment(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.editor = current_user
+            comment.save()
+        return redirect('homepage')
+
+    else:
+        form = CommentForm()
+    return render(request, 'images/homepage.html', {"form": form})
+#
 # @login_required(login_url='/accounts/login/')
 # def add_comment(request):
 #     current_user = request.user
 #     if request.method == 'POST':
 #         form = CommentForm(request.POST, request.FILES)
 #         if form.is_valid():
-#             image = form.save(commit=False)
-#             image.name = current_user
-#             image.save()
-#         return redirect('home')
+#             comment = form.save(commit=False)
+#             comment.user = current_user
+#             comment.save()
+#         return redirect('homepage')
 #
 #     else:
 #         form = CommentForm()

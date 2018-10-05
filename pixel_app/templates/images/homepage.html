@@ -49,6 +49,10 @@
 
 
 
+
+
+
+
     <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
 <hr>
       <a class="btn btn-default" href="{% url 'like_post' id=image.id %}"><i class="far fa-heart"></i></a>
@@ -67,37 +71,24 @@
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
+
+
+            {{form.media}}
+
+      <form  action="{%url 'homepage'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+
+        {% bootstrap_form form%}
+        <input type="submit" class="btn btn-success btn-lg" value="Post">
+      </form>
+
+       {% block scripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      {% bootstrap_javascript %}
+    {% endblock %}
   </div>
 
-    <!-- Modal -->
-<div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">{{image.name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-  <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200">
-      </div>
-        <div>
-        <h4 class="modal-title" id="exampleModalLongTitle">Name: {{image.name}}</h4>
-
-        <h6 class="modal-title" id="exampleModalLongTitle">Details: {{image.description| safe}}</h6>
-        <h6 class="modal-title" id="exampleModalLongTitle">Location: {{image.location| safe}}</h6>
-
-        </div>
-
-      <div class="modal-footer">
-
-
-
-<button class="btn btn-primary" value="https://cherucole-photos.herokuapp.com{{image.image.url}}" onclick="copytext(this.value)">Copy
-           link</button>      </div>
-    </div>
-  </div>
 </div>
       {% empty %}
   <div class="row">
@@ -107,23 +98,7 @@
 
   </div>
 
-<script>
 
-
-    function copytext(text) {
-
-   function handler(event) {
-       event.clipboardData.setData('text/plain', text);
-       event.preventDefault();
-       document.removeEventListener('copy', handler, true);
-   }
-
-   document.addEventListener('copy', handler, true);
-   document.execCommand('copy');
-
-}
-
-</script>
 </div>
 </body>
 </html>

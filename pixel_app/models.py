@@ -32,8 +32,8 @@ class Profile(models.Model):
 
 class Comment(models.Model):
     comment = models.CharField(max_length=30, blank=True)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    imagecommented = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User,on_delete=models.CASCADE, blank=True)
+    imagecommented = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='comments',blank=True)
 
     def save_comment(self):
         self.save()
@@ -59,7 +59,7 @@ class Post(models.Model):
     caption = HTMLField(blank=True)
     likes=models.IntegerField()
     opinions = models.ForeignKey(Comment,on_delete=models.CASCADE, null=True, blank=True)
-    user_profile = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts')
+    user_profile = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts',blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
     @classmethod
