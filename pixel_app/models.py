@@ -41,7 +41,7 @@ class Comment(models.Model):
 
     @classmethod
     def get_comments(cls, id):
-        comments = Comment.objects.filter(id=id)
+        comments = Comment.objects.filter(post_id=id).all()
         return comments
 
 

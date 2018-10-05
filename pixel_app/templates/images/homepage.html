@@ -52,8 +52,8 @@
 
 {% for comment in comments %}
     <div class="comment">
-        <div class="date">{{ comment.comment }}</div>
-        <strong>{{ comment.author }}</strong>
+        <!--<div class="date">{{ comment.comment }}</div>-->
+        <strong>{{ comment.user }}: {{comment.comment}}</strong>
         <p>{{ comment.text|linebreaks }}</p>
     </div>
 {% empty %}

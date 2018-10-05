@@ -19,18 +19,20 @@ def homepage(request):
     comments=Comment.objects.all()
 
 
+
+
     return render(request, 'images/homepage.html', { "posts":posts , "comments":comments})
 
 
 def add_comment(request, id):
-    posts = Post.all_posts()
+    post = Post.objects.get(id=id)
 
     if request.GET.get("id"):
         posts = Post.show_by_id(request.GET.get("id"))
 
     comments=Comment.get_comments(id=id)
 
-    return render(request, 'images/ind_post.html', {  "comments":comments , "posts":posts})
+    return render(request, 'images/ind_post.html', {  "comments":comments , "posts":post})
 
 
 def like_post(request, id):
