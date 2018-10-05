@@ -38,7 +38,7 @@
 
   <div class="card border-secondary">
                   <!--<p>{{image.user_profile.username | safe}} </p>-->
-    <a href="/accounts/profile/{{user.id}}">
+    <a href="{% url 'profile' username=image.user_profile.username %}">
     <label>{{image.user_profile.username}}</label></a>
 
                         <!--<p>{{image.comments.all}} </p>-->
