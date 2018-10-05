@@ -25,13 +25,8 @@ class Comment(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     imagecommented = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='comments')
 
-
-
     def save_comment(self):
         self.save()
-
-    def __str__(self):
-        return self.comment
 
     # @classmethod
     # def get_comments(cls, id):
@@ -43,6 +38,9 @@ class Comment(models.Model):
     def get_comments(cls, id):
         comments = Comment.objects.filter(post_id=id).all()
         return comments
+
+    def __str__(self):
+        return self.comment
 
 
 class Post(models.Model):
