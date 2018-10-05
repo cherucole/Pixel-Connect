@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67718250-56c4-4a6a-9af6-632fba0e1b64" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/migrations/0002_auto_20181004_1341.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/migrations/0003_auto_20181004_1351.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/templates/images/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/templates/images/homepage.html" afterDir="false" />
-    </list>
+    <list default="true" id="67718250-56c4-4a6a-9af6-632fba0e1b64" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pixel_app/templates/images/homepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="39" column="33" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="33" />
+            <state relative-caret-position="193">
+              <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="e#1188#1195#1" expanded="true" />
@@ -135,8 +126,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pixel_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-130">
-              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            <state relative-caret-position="86">
+              <caret line="40" lean-forward="true" selection-end-line="64" selection-end-column="43" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -324,7 +315,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.81497794" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.7900147" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32892805" />
@@ -510,17 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pixel_app/templates/images/homepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="39" column="33" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#1188#1195#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pixel_app/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -538,10 +518,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pixel_app/templates/images/homepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#1188#1195#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pixel_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-130">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        <state relative-caret-position="86">
+          <caret line="40" lean-forward="true" selection-end-line="64" selection-end-column="43" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
