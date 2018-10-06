@@ -140,21 +140,30 @@ def add_profile(request):
 #     return render(request, 'upload.html', {"form": form})
 #
 
+#
+# @login_required(login_url='/accounts/login/')
+# def add_comment(request):
+#     current_user = request.user
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.editor = current_user
+#             comment.save()
+#         return redirect('homepage')
+#
+#     else:
+#         form = CommentForm()
+#     return render(request, 'images/homepage.html', {"form": form})
 
-@login_required(login_url='/accounts/login/')
-def add_comment(request):
-    current_user = request.user
-    if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.editor = current_user
-            comment.save()
-        return redirect('homepage')
 
-    else:
-        form = CommentForm()
-    return render(request, 'images/homepage.html', {"form": form})
+
+
+
+
+
+
+
 #
 # @login_required(login_url='/accounts/login/')
 # def add_comment(request):
