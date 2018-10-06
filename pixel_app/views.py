@@ -31,14 +31,15 @@ def homepage(request):
     # post = Post.one_image(id)
     comments=Comment.objects.all()
     current_user = request.user
-    for post in posts:
-        post_test=post.id
+    # for post in posts:
+    # post_test=posts
 
-        if request.method == 'POST':
-            form = CommentForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        for post in posts:
 
             if form.is_valid():
-                for post in posts:
+                # for post in posts:
 
                     comment = form.save(commit=False)
                     comment.user = current_user
@@ -46,8 +47,8 @@ def homepage(request):
                     comment.save()
             return redirect('homepage')
 
-        else:
-            form = CommentForm()
+    else:
+        form = CommentForm()
 
 
     form=CommentForm
@@ -55,7 +56,7 @@ def homepage(request):
         "form": form,
         "posts":posts ,
         "comments":comments,
-        "post_test":post_test
+        # "post_test":post_test
     }
     return render(request, 'images/homepage.html', context)
 
