@@ -26,30 +26,36 @@ from .email import *
 
 @login_required(login_url='/accounts/login/')
 def homepage(request):
+
     posts = Post.all_posts()
     # post = Post.one_image(id)
     comments=Comment.objects.all()
     current_user = request.user
-    if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
-        post = Post.one_image(posts)
+    for post in posts:
+        post_test=post.id
 
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.user = current_user
-            # comment.imagecommented=post
-            comment.save()
-        return redirect('homepage')
+        if request.method == 'POST':
+            form = CommentForm(request.POST, request.FILES)
 
-    else:
-        form = CommentForm()
+            if form.is_valid():
+                for post in posts:
+
+                    comment = form.save(commit=False)
+                    comment.user = current_user
+                    comment.imagecommented=post
+                    comment.save()
+            return redirect('homepage')
+
+        else:
+            form = CommentForm()
 
 
     form=CommentForm
     context =  {
         "form": form,
         "posts":posts ,
-        "comments":comments
+        "comments":comments,
+        "post_test":post_test
     }
     return render(request, 'images/homepage.html', context)
 

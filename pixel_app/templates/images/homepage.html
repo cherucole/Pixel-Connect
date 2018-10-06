@@ -36,10 +36,14 @@
   <div class="card-columns">
       {% for image in posts %}
 
+      {{post_test}}
+
   <div class="card border-secondary">
                   <!--<p>{{image.user_profile.username | safe}} </p>-->
     <a href="{% url 'profile' username=image.user_profile.username %}">
     <label>{{image.user_profile.username}}</label></a>
+
+            Post id is : {{post_test}} {{image.id}}
 
                         <!--<p>{{image.comments.all}} </p>-->
       {% for comment in image.comments.all %}
