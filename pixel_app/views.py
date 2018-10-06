@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -10,23 +10,34 @@ from .models import *
 from .forms import *
 from .email import *
 
-# def sample_display(request):
-#     message="This is to confirm my page is displaying shit"
-#
-#     return render(request, 'images/homepage.html', {"message":message })
+# def add_comment(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
+#     if request.method == "POST":
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.post = post
+#             comment.save()
+#             return redirect('post_detail', pk=post.pk)
+#     else:
+#         form = CommentForm()
+#     return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
 
 @login_required(login_url='/accounts/login/')
-
 def homepage(request):
     posts = Post.all_posts()
+    # post = Post.one_image(id)
     comments=Comment.objects.all()
-
     current_user = request.user
     if request.method == 'POST':
         form = CommentForm(request.POST, request.FILES)
+        post = Post.one_image(posts)
+
         if form.is_valid():
             comment = form.save(commit=False)
             comment.user = current_user
+            # comment.imagecommented=post
             comment.save()
         return redirect('homepage')
 
@@ -34,7 +45,7 @@ def homepage(request):
         form = CommentForm()
 
 
-    # form=CommentForm
+    form=CommentForm
     context =  {
         "form": form,
         "posts":posts ,
@@ -163,19 +174,34 @@ def add_profile(request):
 
 
 
-
-#
-# @login_required(login_url='/accounts/login/')
-# def add_comment(request):
-#     current_user = request.user
-#     if request.method == 'POST':
-#         form = CommentForm(request.POST, request.FILES)
+# def add_comment(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
+#     if request.method == "POST":
+#         form = CommentForm(request.POST)
 #         if form.is_valid():
 #             comment = form.save(commit=False)
-#             comment.user = current_user
+#             comment.post = post
 #             comment.save()
-#         return redirect('homepage')
-#
+#             return redirect('post_detail', pk=post.pk)
 #     else:
 #         form = CommentForm()
-#     return render(request, 'comment.html', {"form": form})
+#     return render(request, 'blog/add_comment_to_post.html', {'form': form})
+#
+
+#
+# def add_comment(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
+#     form=CommentForm()
+#
+#     if request.method == "POST":
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.post = post
+#             comment.save()
+#             return redirect('homepage', pk=post.pk)
+#     else:
+#         form = CommentForm()
+#     return render(request, 'image/homepage.html', {'form': form})
+#
+#

@@ -38,11 +38,6 @@ class Comment(models.Model):
     def save_comment(self):
         self.save()
 
-    # @classmethod
-    # def get_comments(cls, id):
-    #
-    #     comments = Comment.objects.filter(id=id)
-    #     return comments
 
     @classmethod
     def get_comments(cls, id):
@@ -63,6 +58,17 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     @classmethod
+    def one_image(cls, id):
+        post=Post.objects.filter(id=id)
+        return post
+
+
+    @classmethod
+    def get_post_by_id(cls,id):
+        post = Post.objects.filter(id = Post.id)
+        return post
+
+    @classmethod
     def all_posts(cls):
         posts = cls.objects.all()
         return posts
@@ -77,6 +83,15 @@ class Post(models.Model):
         posts = Post.objects.filter(user_profile__pk=profile)
         return posts
 
+    @classmethod
+    def get_post_by_id(cls,id):
+        post = Post.objects.filter(id = Post.id)
+        return post
+    #
+    # @classmethod
+    # def get_post_by_id(cls, id):
+    #     post = Post.objects.filter(id = Post.id)
+    #     return post
 
 class Likes(models.Model):
 	post = models.IntegerField()
