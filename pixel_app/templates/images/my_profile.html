@@ -5,35 +5,77 @@
 <br>
 <br>
 <div class="container">
+<div class="row">
 
-  <div class="card-columns">
+  <div class="col-md-4">
 
-    <div class="card border-secondary">
-      <img class="card-img-top" class="img-responsive" src="{{profile.avatar.url}}" size="">
+        <div class="card border-secondary">
+      <img class="rounded-circle img-responsive" width="170" height="170" src="{{user.profile.avatar.url}}" size="">
     <div class="card-footer">
-      <p>{{profile.user}}</p>
-      test {{profile_info.user}}
-      <p>{{profile.bio}}</p>
+      <p>{{profile.profile.user}}</p>
+      <p>{{profile_info.bio | safe}}</p>
       </div>
     </div>
-    {% for image in posts %}
-      <div class="card mx-auto" style="max-width:50rem; margin-top:50px;">
-      <div class="card-header"><img class="img-circle" src="{{image.profile.profile_photo.url}}" style="height:40px;margin-top:10px;margin-bottom:10px;">
-        <a href="/accounts/profile/{{user.id}}">
-        <label>{{image.user}}</label></div></a>
 
-        <img src="{{image.image.url}}" class="card-img-top">
-        <div class="card-body">
-        <div class="header"><a href="#"><i class="fas fa-heart" style="margin-right:10px;"></i></a><a href="#"><i class="far fa-comment"></i></a></div>
-        <div class="more-section">
-          <label>10 Likes</label>
-          <p><strong>{{image.user}} </strong>{{image.caption | safe}}</p>
-      </div>
+  </div>
+
+  <div class="col-lg-8 col-md-10 mx-auto">
+
+
+
+
+
+  <div class="card-columns " >
+      <div class="card border-light"  >
+      {% for image in posts %}
+
+      {{post_test.id}}
+
+
+                  <div class="header"><img class="img-circle" src="{{image.user_profile.avater.url}}">
+            </div>
+
+  <div class="card border-secondary" style="width:240%;">
+                  <!--<p>{{image.user_profile.username | safe}} </p>-->
+    <a href="{% url 'profile' username=image.user_profile.username %}">
+    <label>{{image.user_profile.username}}</label></a>
+
+
+                        <!--<p>{{image.comments.all}} </p>-->
+
+
+
+    <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
+<hr>
+       <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i class="far fa-heart fa-2x ml-4"></i></a>
+      <p>{{image.caption | safe}}</p>
+            <p>{{image.likes | safe}} likes</p>
+
+
+
+      {% for comment in image.comments.all %}
+
+
+          <p>{{comment.user}} : {{comment.comment}}</p>
+
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
+
+
+  </div>
+
+
+      {% empty %}
+  <div class="row">
+    <h2 class="text-center">There is no images here</h2>
+  </div>
+      {% endfor %}
+          </div>
+
+  </div>
     </div>
     </div>
-    {%endfor%}
-
-
-</div>
 
 {% endblock %}
