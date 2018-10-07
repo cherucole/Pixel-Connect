@@ -12,7 +12,7 @@ urlpatterns=[
     url(r'^upload$', views.upload_image, name='upload'),
     #
 
-    url(r'^profile/', views.my_profile, name='my_profile'),
+    url(r'^accounts/profile/', views.my_profile, name='my_profile'),
 
     url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
     # url(r'^search/', views.search_results, name='search_results'),
