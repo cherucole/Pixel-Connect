@@ -78,15 +78,15 @@ def my_profile(request):
 
     return render(request,"images/my_profile.html",{"profile":profile,"posts":posts})
 
-def add_comment(request, id):
-    post = Post.objects.get(id=id)
-
-    if request.GET.get("id"):
-        posts = Post.show_by_id(request.GET.get("id"))
-
-    comments=Comment.get_comments(id=id)
-
-    return render(request, 'images/ind_post.html', {  "comments":comments , "posts":post})
+# def add_comment(request, id):
+#     post = Post.objects.get(id=id)
+#
+#     if request.GET.get("id"):
+#         posts = Post.show_by_id(request.GET.get("id"))
+#
+#     comments=Comment.get_comments(id=id)
+#
+#     return render(request, 'images/ind_post.html', {  "comments":comments , "posts":post})
 
 
 def like_post(request, id):
@@ -282,3 +282,20 @@ def comment(request, pk):
         # "post_test":post_test
     }
     return render(request, 'images/homepage.html', context)
+
+# @login_required(login_url='/accounts/login/')
+# def leave_comment(request, pk):
+#     post = get_object_or_404(Post,pk=pk)
+#
+#     # current_user = request.user
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.imagecommented = post
+#             comment.save()
+#         return redirect('homepage')
+#
+#     else:
+#         form = CommentForm()
+#     return redirect(request, 'homepage', {"form": form})
