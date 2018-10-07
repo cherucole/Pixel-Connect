@@ -14,7 +14,7 @@ class CommentForm(forms.ModelForm):
 class NewProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = "__all__"
+        exclude = ['user']
 
 class UploadForm(forms.ModelForm):
     class Meta:

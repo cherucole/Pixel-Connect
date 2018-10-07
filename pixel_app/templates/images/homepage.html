@@ -55,17 +55,8 @@
     <a href="{% url 'profile' username=image.user_profile.username %}">
     <label>{{image.user_profile.username}}</label></a>
 
-            Post id is : {{post_test.image}} {{image.id}}
 
                         <!--<p>{{image.comments.all}} </p>-->
-      {% for comment in image.comments.all %}
-
-      {{comment.comment}}
-{% endfor %}
-
-
-
-
 
 
 
@@ -77,12 +68,11 @@
 
 
 
-{% for comment in comments %}
-    <div class="comment">
-        <!--<div class="date">{{ comment.comment }}</div>-->
-        <strong>{{ comment.user }}: {{comment.comment}}</strong>
-        <p>{{ comment.text|linebreaks }}</p>
-    </div>
+      {% for comment in image.comments.all %}
+
+
+          <p>{{comment.user}} : {{comment.comment}}</p>
+
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}

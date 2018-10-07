@@ -143,7 +143,7 @@ def add_profile(request):
         form = NewProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.editor = current_user
+            profile.user = current_user
             profile.save()
         return redirect('homepage')
 

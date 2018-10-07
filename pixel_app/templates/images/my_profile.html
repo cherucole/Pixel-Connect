@@ -12,6 +12,7 @@
       <img class="card-img-top" class="img-responsive" src="{{profile.avatar.url}}" size="">
     <div class="card-footer">
       <p>{{profile.user}}</p>
+      test {{profile_info.user}}
       <p>{{profile.bio}}</p>
       </div>
     </div>
@@ -26,7 +27,7 @@
         <div class="header"><a href="#"><i class="fas fa-heart" style="margin-right:10px;"></i></a><a href="#"><i class="far fa-comment"></i></a></div>
         <div class="more-section">
           <label>10 Likes</label>
-          <p><strong>{{image.user}} </strong>{{image.caption}}</p>
+          <p><strong>{{image.user}} </strong>{{image.caption | safe}}</p>
       </div>
     </div>
     </div>
