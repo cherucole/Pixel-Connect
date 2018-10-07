@@ -57,7 +57,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to='images/', blank=True)
     # name = models.CharField(max_length=30)
     caption = HTMLField(blank=True)
-    likes=models.IntegerField()
+    likes=models.IntegerField(default=0)
     opinions = models.ForeignKey(Comment,on_delete=models.CASCADE, null=True, blank=True)
     user_profile = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts',blank=True)
     date = models.DateTimeField(auto_now_add=True)

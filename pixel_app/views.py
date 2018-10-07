@@ -101,7 +101,7 @@ def upload_image(request):
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.user = current_user
+            post.user_profile = current_user
             post.save()
         return redirect('homepage')
 

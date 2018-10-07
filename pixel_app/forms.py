@@ -19,5 +19,5 @@ class NewProfileForm(forms.ModelForm):
 class UploadForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = "__all__"
+        exclude = ['user_profile', 'likes', 'opinions']
 
