@@ -31,21 +31,21 @@ def homepage(request):
     # post = Post.one_image(id)
     comments=Comment.objects.all()
     current_user = request.user
-    # for post in posts:
+    for post in posts:
     # post_test=posts
 
-    if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
-        for post in posts:
+        if request.method == 'POST':
+            form = CommentForm(request.POST, request.FILES)
+            for post in posts:
 
-            if form.is_valid():
-                # for post in posts:
+                if form.is_valid():
+                    # for post in posts:
 
-                    comment = form.save(commit=False)
-                    comment.user = current_user
-                    comment.imagecommented=post
-                    comment.save()
-            return redirect('homepage')
+                        comment = form.save(commit=False)
+                        comment.user = current_user
+                        comment.imagecommented=post
+                        comment.save()
+                return redirect('homepage')
 
     else:
         form = CommentForm()
@@ -243,3 +243,23 @@ def like(request,operation,pk):
         image.likes -= 1
         image.save()
     return redirect('homepage')
+
+
+def new_comment(request,operation,pk):
+    post = get_object_or_404(Post,pk=pk)
+    current_user = request.user
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            # for post in posts:
+
+            comment = form.save(commit=False)
+            comment.user = current_user
+            comment.imagecommented=post
+            comment.save()
+
+    form=CommentForm
+    return redirect('homepage',{"form":form})
+

@@ -17,7 +17,7 @@ urlpatterns=[
 url(r'^like/(?P<operation>.+)/(?P<pk>\d+)',views.like, name='like'),
 
     url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
-    # url(r'^search/', views.search_results, name='search_results'),
+    url(r'^comment/', views.new_comment, name='add_comments'),
     url(r'^new/profile$', views.add_profile, name='add_profile'),
 
 

@@ -29,6 +29,8 @@
 
 
 <div class="container">
+        <h1 id="mainheading" style="text-align:center; color:#0d47a1" class="display-4"> Pixel Connect</h1>
+
 
   <div class="row">
 
@@ -38,8 +40,8 @@
 
 
 
-  <div class="card-columns" >
-      <div class="card" style="width:240%;" >
+  <div class="card-columns " >
+      <div class="card border-light"  >
       {% for image in posts %}
 
       {{post_test.id}}
@@ -48,7 +50,7 @@
                   <div class="header"><img class="img-circle" src="{{image.user_profile.avater.url}}">
             </div>
 
-  <div class="card border-secondary">
+  <div class="card border-secondary" style="width:240%;">
                   <!--<p>{{image.user_profile.username | safe}} </p>-->
     <a href="{% url 'profile' username=image.user_profile.username %}">
     <label>{{image.user_profile.username}}</label></a>
@@ -140,7 +142,6 @@
 <div class="container-fluid">
 
 
-    <h1 id="mainheading" style="text-align:center; color:#0d47a1" class="display-4"> Pixel Connect</h1>
 
 
           <br>
