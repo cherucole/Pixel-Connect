@@ -2,6 +2,7 @@
 {% load bootstrap4 %}
 {% block content %}
 {{ block.super}}
+{% load staticfiles %}
 
 
 <!DOCTYPE html>
@@ -21,6 +22,8 @@
 
 
 <div class="container">
+<img src="{% static 'images/login.png'%}" alt="">
+
 
     <h1 style="text-align:center; color:#0d47a1" class="display-3"> Pixel-Connect</h1>
 
@@ -37,6 +40,10 @@
       {% for image in posts %}
 
       {{post_test.id}}
+
+
+                  <div class="header"><img class="img-circle" src="{{image.user_profile.avater.url}}">
+            </div>
 
   <div class="card border-secondary">
                   <!--<p>{{image.user_profile.username | safe}} </p>-->
