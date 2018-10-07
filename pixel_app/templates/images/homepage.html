@@ -8,7 +8,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/images.css' %}">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +26,9 @@
 
 
 <div class="container">
-<img src="{% static 'images/login.png'%}" alt="">
 
 
-    <h1 style="text-align:center; color:#0d47a1" class="display-3"> Pixel-Connect</h1>
+    <h1 id="mainheading" style="text-align:center; color:#0d47a1" class="display-4"> Pixel Connect</h1>
 
     {% for category in categories %}
 
