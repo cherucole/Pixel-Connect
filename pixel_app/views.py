@@ -221,3 +221,25 @@ def add_profile(request):
 #     return render(request, 'image/homepage.html', {'form': form})
 #
 #
+
+def search(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term = request.GET.get('search')
+        profiles = Profile.search_profile(search_term)
+        message = f'{search_term}'
+
+        return render(request, 'images/search.html',{'message':message, 'profiles':profiles})
+    else:
+        message = 'Enter term to search'
+        return render(request, 'images/search_profile.html', {'message':message})
+
+
+def like(request,operation,pk):
+    image = get_object_or_404(Post,pk=pk)
+    if operation == 'like':
+        image.likes += 1
+        image.save()
+    elif operation =='unlike':
+        image.likes -= 1
+        image.save()
+    return redirect('homepage')

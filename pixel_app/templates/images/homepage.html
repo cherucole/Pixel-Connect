@@ -69,6 +69,9 @@
 
     <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
 <hr>
+       <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;">
+                                                                      <i class="far fa-heart fa-2x ml-4"></i>
+                                                              </a>
       <a class="btn btn-default" href="{% url 'like_post' id=image.id %}"><i class="far fa-heart"></i></a>
             <a class="btn btn-default" href="{% url 'add_comment' id=image.id %}"><i class="far fa-comment"></i></a>
       <p>{{image.caption | safe}}</p>
@@ -114,6 +117,13 @@
   </div>
     </div>
 
+
+    <!--<div class="col-md-3">-->
+
+<!--<img src="{% static 'images/instagram.png'%}" alt="">-->
+
+
+    <!--</div>-->
 
     </div>
     </div>

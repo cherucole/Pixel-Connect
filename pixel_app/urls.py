@@ -13,6 +13,8 @@ urlpatterns=[
     #
 
     url(r'^accounts/profile/', views.my_profile, name='my_profile'),
+    url(r'^search/', views.search, name='search'),
+url(r'^like/(?P<operation>.+)/(?P<pk>\d+)',views.like, name='like'),
 
     url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
     # url(r'^search/', views.search_results, name='search_results'),
