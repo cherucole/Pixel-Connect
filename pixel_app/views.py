@@ -245,21 +245,40 @@ def like(request,operation,pk):
     return redirect('homepage')
 
 
-def new_comment(request,operation,pk):
+
+@login_required(login_url='/accounts/login/')
+def comment(request, pk):
     post = get_object_or_404(Post,pk=pk)
+
+    posts = Post.all_posts()
+    # post = Post.one_image(id)
+    comments=Comment.objects.all()
     current_user = request.user
+    for post in posts:
+    # post_test=posts
 
-    if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
+        if request.method == 'POST':
+            form = CommentForm(request.POST, request.FILES)
+            for post in posts:
 
-        if form.is_valid():
-            # for post in posts:
+                if form.is_valid():
+                    # for post in posts:
 
-            comment = form.save(commit=False)
-            comment.user = current_user
-            comment.imagecommented=post
-            comment.save()
+                        comment = form.save(commit=False)
+                        comment.user = current_user
+                        comment.imagecommented=post
+                        comment.save()
+                return redirect('homepage')
+
+    else:
+        form = CommentForm()
+
 
     form=CommentForm
-    return redirect('homepage',{"form":form})
-
+    context =  {
+        "form": form,
+        "posts":posts ,
+        "comments":comments,
+        # "post_test":post_test
+    }
+    return render(request, 'images/homepage.html', context)
