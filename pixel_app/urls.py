@@ -8,7 +8,7 @@ urlpatterns=[
 
     url(r'^$', views.homepage, name='homepage'),
     url(r'^post/(?P<id>\d+)/comment/$', views.add_comment, name='add_comment'),
-    url(r'^post/(?P<id>\d+)/comment/$', views.like_post, name='like_post'),
+    url(r'^post/(?P<id>\d+)/like/$', views.like_post, name='like_post'),
     url(r'^upload$', views.upload_image, name='upload'),
     #
     url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
