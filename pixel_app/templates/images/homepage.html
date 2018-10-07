@@ -25,21 +25,34 @@
 
 
 
-<div class="container">
+<div class="container-fluid">
 
 
     <h1 id="mainheading" style="text-align:center; color:#0d47a1" class="display-4"> Pixel Connect</h1>
 
-    {% for category in categories %}
 
-    <a href="/?category={{category.id}}"> <button class="btn btn-lg btn-link">      #{{category.name}}</button></a>
-
-          {% endfor %}
+          <br>
+        <br>
 
 
+    <br>
+  <div class="row">
 
 
-  <div class="card-columns">
+
+    <!-- Empty div -->
+    <div class="col-md-5">
+
+<!--<img src="{% static 'images/login.png'%}" alt="">-->
+
+
+    </div>
+
+    <div class="col-md-7">
+
+
+  <div class="card-columns" >
+      <div class="card" style="width:100%;">
       {% for image in posts %}
 
       {{post_test.id}}
@@ -109,10 +122,15 @@
     <h2 class="text-center">There is no images here</h2>
   </div>
       {% endfor %}
+          </div>
 
   </div>
     </div>
+          <div class="col-md-4"></div>
 
+
+    </div>
+    </div>
 
 
 
