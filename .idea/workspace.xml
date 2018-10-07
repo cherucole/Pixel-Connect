@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67718250-56c4-4a6a-9af6-632fba0e1b64" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pixel_app/static/images/login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pixel_app/static/images/instagram.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/static/css/images.css" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/static/css/images.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/templates/images/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/templates/images/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/templates/images/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/templates/images/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixel_app/templates/registration/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/templates/registration/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pixel_app/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/pixel_app/templates/registration/login.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,14 +51,14 @@
           <entry key="css" value="29" />
           <entry key="env" value="16" />
           <entry key="gitignore" value="23" />
-          <entry key="html" value="1195" />
+          <entry key="html" value="1208" />
           <entry key="py" value="2633" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="29" />
-          <entry key="HTML" value="1195" />
+          <entry key="HTML" value="1208" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="Python" value="2633" />
         </counts>
@@ -87,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pixel_app/templates/registration/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="48" column="117" selection-start-line="48" selection-start-column="117" selection-end-line="48" selection-end-column="117" />
+            <state relative-caret-position="270">
+              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -635,8 +630,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pixel_app/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="48" column="117" selection-start-line="48" selection-start-column="117" selection-end-line="48" selection-end-column="117" />
+        <state relative-caret-position="270">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
