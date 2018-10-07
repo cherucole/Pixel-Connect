@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a class="navbar-brand" href="new/profile">Add Profile</a>
+              <a href="{% url 'homepage' %}"> <button class="btn btn-lg btn-link">Home</button></a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,16 +17,19 @@
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-    <a href="{% url 'add_profile' %}"> <button class="btn btn-lg btn-link">Add Profile</button></a>
+
 
           <div class="dropdown-divider"></div>
 
         </div>
       </li>
       <li>
+            <a href="{% url 'add_profile' %}"> <button class="btn btn-lg btn-link">Add Profile</button></a>
+
+      </li>
+      <li>
             <a href="{% url 'upload' %}"> <button class="btn btn-lg btn-link">Upload </button></a>
 
-        my_profile
 
       </li>
           <li>
