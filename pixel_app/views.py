@@ -64,10 +64,19 @@ def homepage(request):
 @login_required
 def profile(request,profile_id):
 
-    users = User.objects.get(pk = profile_id)
+    profile = User.objects.get(pk = profile_id)
     posts = Post.objects.filter(profile_id=profile).all()
 
-    return render(request,"profile.html",{"users":users,"posts":posts})
+    return render(request,"profile.html",{"profile":profile,"posts":posts})
+
+@login_required
+def my_profile(request):
+
+    profile = request.user
+
+    posts = Post.objects.filter(user_profile_id=profile).all()
+
+    return render(request,"images/my_profile.html",{"profile":profile,"posts":posts})
 
 def add_comment(request, id):
     post = Post.objects.get(id=id)

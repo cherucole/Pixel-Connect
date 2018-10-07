@@ -11,11 +11,11 @@
     <div class="card border-secondary">
       <img class="card-img-top" class="img-responsive" src="{{profile.avatar.url}}" size="">
     <div class="card-footer">
-      <p>{{user.user}}</p>
-      <p>{{user.bio}}</p>
+      <p>{{profile.user}}</p>
+      <p>{{profile.bio}}</p>
       </div>
     </div>
-    {% for image in images %}
+    {% for image in posts %}
       <div class="card mx-auto" style="max-width:50rem; margin-top:50px;">
       <div class="card-header"><img class="img-circle" src="{{image.profile.profile_photo.url}}" style="height:40px;margin-top:10px;margin-bottom:10px;">
         <a href="/accounts/profile/{{user.id}}">
