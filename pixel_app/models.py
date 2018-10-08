@@ -35,22 +35,6 @@ class Profile(models.Model):
     class Meta:
         ordering = ['user']
 
-class Comment(models.Model):
-    comment = models.CharField(max_length=30, blank=True)
-    user = models.ForeignKey(User,on_delete=models.CASCADE, blank=True)
-    imagecommented = models.ForeignKey('pixel_app.Post',on_delete=models.CASCADE, related_name='comments',blank=True)
-
-    def save_comment(self):
-        self.save()
-
-
-    @classmethod
-    def get_comments(cls, id):
-        comments = Comment.objects.filter(post_id=id).all()
-        return comments
-
-    def __str__(self):
-        return self.comment
 
 
 class Post(models.Model):
@@ -58,7 +42,6 @@ class Post(models.Model):
     # name = models.CharField(max_length=30)
     caption = HTMLField(blank=True)
     likes=models.IntegerField(default=0)
-    opinions = models.ForeignKey(Comment,on_delete=models.CASCADE, null=True, blank=True)
     user_profile = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts',blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
@@ -97,6 +80,24 @@ class Post(models.Model):
     # def get_post_by_id(cls, id):
     #     post = Post.objects.filter(id = Post.id)
     #     return post
+
+
+class Comment(models.Model):
+    comment = models.CharField(max_length=30, blank=True)
+    poster = models.ForeignKey(User,on_delete=models.CASCADE, blank=True)
+    imagecommented = models.ForeignKey(Post,on_delete=models.CASCADE, related_name='comments',null=True)
+
+    def save_comment(self):
+        self.save()
+
+
+    @classmethod
+    def get_comments(cls, id):
+        comments = Comment.objects.filter(post_id=id).all()
+        return comments
+
+    def __str__(self):
+        return self.comment
 
 class Likes(models.Model):
 	post = models.IntegerField()

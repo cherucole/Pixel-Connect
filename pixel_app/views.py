@@ -10,20 +10,6 @@ from .models import *
 from .forms import *
 from .email import *
 
-# def add_comment(request, pk):
-#     post = get_object_or_404(Post, pk=pk)
-#     if request.method == "POST":
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.post = post
-#             comment.save()
-#             return redirect('post_detail', pk=post.pk)
-#     else:
-#         form = CommentForm()
-#     return render(request, 'blog/add_comment_to_post.html', {'form': form})
-
-
 @login_required(login_url='/accounts/login/')
 def homepage(request):
 
@@ -31,21 +17,18 @@ def homepage(request):
     # post = Post.one_image(id)
     comments=Comment.objects.all()
     current_user = request.user
-    for post in posts:
     # post_test=posts
 
-        if request.method == 'POST':
-            form = CommentForm(request.POST, request.FILES)
-            for post in posts:
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
 
-                if form.is_valid():
-                    # for post in posts:
+        if form.is_valid():
+            # for post in posts:
 
-                        comment = form.save(commit=False)
-                        comment.user = current_user
-                        comment.imagecommented=post
-                        comment.save()
-                return redirect('homepage')
+            comment = form.save(commit=False)
+            comment.user = current_user
+            comment.save()
+        return redirect('homepage')
 
     else:
         form = CommentForm()
@@ -78,16 +61,6 @@ def my_profile(request):
 
     return render(request,"images/my_profile.html",{"profile":profile,"posts":posts})
 
-# def add_comment(request, id):
-#     post = Post.objects.get(id=id)
-#
-#     if request.GET.get("id"):
-#         posts = Post.show_by_id(request.GET.get("id"))
-#
-#     comments=Comment.get_comments(id=id)
-#
-#     return render(request, 'images/ind_post.html', {  "comments":comments , "posts":post})
-
 
 def like_post(request, id):
 
@@ -109,20 +82,6 @@ def upload_image(request):
         form = UploadForm()
     return render(request, 'images/upload.html', {"form": form})
 
-# @login_required(login_url='/accounts/login/')
-# def add_profile(request):
-#     current_user = request.user
-#     if request.method == 'POST':
-#         form = NewProfileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             profile = form.save(commit=False)
-#             profile.editor = current_user
-#             profile.save()
-#         return redirect('home')
-#
-#     else:
-#         form = NewProfileForm()
-#     return render(request, 'new_profile.html', {"form": form})
 
 
 def profile(request, username):
@@ -150,77 +109,7 @@ def add_profile(request):
     else:
         form = NewProfileForm()
     return render(request, 'images/new_profile.html', {"form": form})
-#
-# @login_required(login_url='/accounts/login/')
-# def update_image(request):
-#     current_user = request.user
-#     if request.method == 'POST':
-#         form = UploadForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             image = form.save(commit=False)
-#             image.name = current_user
-#             image.save()
-#         return redirect('home')
-#
-#     else:
-#         form = UploadForm()
-#     return render(request, 'upload.html', {"form": form})
-#
 
-#
-# @login_required(login_url='/accounts/login/')
-# def add_comment(request):
-#     current_user = request.user
-#     if request.method == 'POST':
-#         form = CommentForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.editor = current_user
-#             comment.save()
-#         return redirect('homepage')
-#
-#     else:
-#         form = CommentForm()
-#     return render(request, 'images/homepage.html', {"form": form})
-
-
-
-
-
-
-
-
-# def add_comment(request, pk):
-#     post = get_object_or_404(Post, pk=pk)
-#     if request.method == "POST":
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.post = post
-#             comment.save()
-#             return redirect('post_detail', pk=post.pk)
-#     else:
-#         form = CommentForm()
-#     return render(request, 'blog/add_comment_to_post.html', {'form': form})
-#
-
-#
-# def add_comment(request, pk):
-#     post = get_object_or_404(Post, pk=pk)
-#     form=CommentForm()
-#
-#     if request.method == "POST":
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.post = post
-#             comment.save()
-#             return redirect('homepage', pk=post.pk)
-#     else:
-#         form = CommentForm()
-#     return render(request, 'image/homepage.html', {'form': form})
-#
-#
 
 def search(request):
     if 'search' in request.GET and request.GET['search']:
@@ -245,57 +134,19 @@ def like(request,operation,pk):
     return redirect('homepage')
 
 
-
 @login_required(login_url='/accounts/login/')
-def comment(request, pk):
-    post = get_object_or_404(Post,pk=pk)
-
-    posts = Post.all_posts()
-    # post = Post.one_image(id)
-    comments=Comment.objects.all()
+def add_comment(request,pk):
+    image = get_object_or_404(Post, pk=pk)
     current_user = request.user
-    for post in posts:
-    # post_test=posts
-
-        if request.method == 'POST':
-            form = CommentForm(request.POST, request.FILES)
-            for post in posts:
-
-                if form.is_valid():
-                    # for post in posts:
-
-                        comment = form.save(commit=False)
-                        comment.user = current_user
-                        comment.imagecommented=post
-                        comment.save()
-                return redirect('homepage')
-
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.imagecommented = image
+            comment.poster = current_user
+            comment.save()
+            return redirect('homepage')
     else:
         form = CommentForm()
+        return render(request,'comment.html',{"user":current_user,"comment_form":form})
 
-
-    form=CommentForm
-    context =  {
-        "form": form,
-        "posts":posts ,
-        "comments":comments,
-        # "post_test":post_test
-    }
-    return render(request, 'images/homepage.html', context)
-
-# @login_required(login_url='/accounts/login/')
-# def leave_comment(request, pk):
-#     post = get_object_or_404(Post,pk=pk)
-#
-#     # current_user = request.user
-#     if request.method == 'POST':
-#         form = CommentForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.imagecommented = post
-#             comment.save()
-#         return redirect('homepage')
-#
-#     else:
-#         form = CommentForm()
-#     return redirect(request, 'homepage', {"form": form})
