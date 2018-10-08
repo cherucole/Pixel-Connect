@@ -38,17 +38,21 @@
     <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
 <hr>
        <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i class="far fa-heart fa-2x ml-4"></i></a>
-      <p>{{image.caption | safe}}</p>
-            <p>{{image.likes | safe}} likes</p>
+<div style="width:100%; padding-left:20px;">
+  <p style="width:100%; padding-left:20px;">{{image.caption | safe}}</p>
+
+</div>
+
+            <p style="width:100%; padding-left:20px;">{{image.likes | safe}} likes</p>
+        {% for comment in image.comments.all %}
 
 
-      {% for comment in image.comments.all %}
+                  <p style="width:100%; padding-left:20px;">{{comment.poster}} : {{comment.comment}}</p>
 
-          <p>{{comment.poster}} : {{comment.comment}}</p>
+        {% empty %}
+            <p style="width:100%; padding-left:20px;">No comments here yet :(</p>
+        {% endfor %}
 
-{% empty %}
-    <p>No comments here yet :(</p>
-{% endfor %}
 
 
 

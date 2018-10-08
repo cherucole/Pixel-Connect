@@ -27,14 +27,14 @@
 
     <div class="col-md-8" style="width:100%;">
       {% for image in posts%}
-      <div class="card" style="width:70%;">
+      <div class="card border-secondary" style="width:70%;">
         <a style="width:100%; padding-left:20px;" href="{% url 'profile' username=image.user_profile.username %}">
 
         <label>{{image.user_profile.username}}</label></a>
         <img src="{{image.image.url}}" alt=""  class="card-img-top img-responsive" alt="Image" style="height:600px;width:100%;">
         <br>
 
-        <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i class="far fa-heart fa-2x ml-4"></i></a>
+        <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:red;"><i class="far fa-heart fa-2x ml-4"></i></a>
 <div style="width:100%; padding-left:20px;">
   <p style="width:100%; padding-left:20px;">{{image.caption | safe}}</p>
 
