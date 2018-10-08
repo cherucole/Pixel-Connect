@@ -8,6 +8,12 @@ font-family: 'Slabo 27px', serif;
 
 }
 
+#cardcontent{
+padding-left: 20px;
+margin: 20px;
+}
+
+
 #login{
 
 font-family: 'Grand Hotel', cursive;

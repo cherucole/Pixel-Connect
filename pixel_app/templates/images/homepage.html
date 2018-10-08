@@ -1,16 +1,13 @@
-{%extends 'images/base.html'%}
-{% load bootstrap4 %}
-{% block content %}
-{{ block.super}}
-{% load staticfiles %}
+{%extends 'images/base.html'%} {% load bootstrap4 %} {% block content %} {{ block.super}} {% load staticfiles %}
 
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/images.css' %}">
 
@@ -19,83 +16,66 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
-
-<div class="container">
-        <h1 id="mainheading" style="text-align:center; color:#0d47a1" class="display-4"> Pixel Connect</h1>
-
+<div class="container-fluid">
+  <h1 id="mainheading" style="text-align:center; color:#0d47a1" class="display-4"> Pixel Connect</h1>
 
   <div class="row">
 
-        <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-md-3"></div>
 
-  <div class="card-columns " >
-      <div class="card border-light"  >
-      {% for image in posts %}
+    <div class="col-md-8" style="width:100%;">
+      {% for image in posts%}
+      <div class="card" style="width:70%;">
+        <a style="width:100%; padding-left:20px;" href="{% url 'profile' username=image.user_profile.username %}">
 
+        <label>{{image.user_profile.username}}</label></a>
+        <img src="{{image.image.url}}" alt=""  class="card-img-top img-responsive" alt="Image" style="height:600px;width:100%;">
+        <br>
 
-        <div class="card-header"><img class="img-fluid rounded-circle" src="{{image.profile.avatar.url}}" style="height:40px;margin-top:5px;margin-bottom:5px;">
-            </div>
-          1 {{image.profile}}
+        <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i class="far fa-heart fa-2x ml-4"></i></a>
+<div style="width:100%; padding-left:20px;">
+  <p style="width:100%; padding-left:20px;">{{image.caption | safe}}</p>
 
-  <div class="card border-secondary" style="width:240%;">
-                  <!--<p>{{image.user_profile.username | safe}} </p>-->
-    <a href="{% url 'profile' username=image.user_profile.username %}">
+</div>
 
-    <label>{{image.user_profile.username}}</label></a>
-
-
-<img class="img-circle" src="{{image.profile.avatar.url}}">
-
-
-    <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
-<hr>
-       <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i class="far fa-heart fa-2x ml-4"></i></a>
-      <p>{{image.caption | safe}}</p>
-            <p>{{image.likes | safe}} likes</p>
+            <p style="width:100%; padding-left:20px;">{{image.likes | safe}} likes</p>
+        {% for comment in image.comments.all %}
 
 
-      {% for comment in image.comments.all %}
+                  <p style="width:100%; padding-left:20px;">{{comment.poster}} : {{comment.comment}}</p>
+
+        {% empty %}
+            <p style="width:100%; padding-left:20px;">No comments here yet :(</p>
+        {% endfor %}
 
 
-          <p>{{comment.poster}} : {{comment.comment}}</p>
+                    {{form.media}}
 
-{% empty %}
-    <p>No comments here yet :(</p>
-{% endfor %}
+                    <form style="width:100%; padding-left:20px;padding-right:20px;" action="{%url 'comment' pk=image.id%}" method="post" enctype="multipart/form-data">
+                      {%csrf_token%}
 
+                      {% bootstrap_form form%}
 
-            {{form.media}}
+                    </form>
 
-            <form action="{%url 'comment' pk=image.id%}" method="post" enctype="multipart/form-data">
-              {%csrf_token%}
+               {% block scripts %}
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-              {% bootstrap_form form%}
-
-            </form>
-
-       {% block scripts %}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-      {% bootstrap_javascript %}
-    {% endblock %}
-  </div>
-
-
-      {% empty %}
-  <div class="row">
-    <h2 class="text-center">There is no images here</h2>
-  </div>
-      {% endfor %}
-          </div>
-
-  </div>
-    </div>
+              {% bootstrap_javascript %}
+            {% endblock %}
+      </div>
+      <br>
+      {% endfor%}
 
     </div>
-    </div>
 
+  </div>
+
+</div>
 </body>
+
 </html>
 
 {% endblock %}
