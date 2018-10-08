@@ -79,37 +79,22 @@ def add_profile(request):
     return render(request, 'images/new_profile.html', {"form": form})
 
 
-def search(request):
-    if 'search' in request.GET and request.GET['search']:
-        search_term = request.GET.get('search')
-        profiles = Profile.search_profile(search_term)
-        message = f'{search_term}'
-
-        return render(request, 'images/search.html',{'message':message, 'profiles':profiles})
-    else:
-        message = 'Enter term to search'
-        return render(request, 'images/search_profile.html', {'message':message})
-
-
-
-
-
 @login_required(login_url='/accounts/login/')
 def search_results(request):
     current_user = request.user
-    profile = Profile.get_profile()
+    profiles = Profile.get_all_profiles()
     if 'username' in request.GET and request.GET["username"]:
         search_term = request.GET.get("username")
         searched_name = Profile.find_profile(search_term)
         message = search_term
 
-        return render(request,'images/search.html',{"message":message,
-                                             "profiles":profile,
+        return render(request,'images/search_profile.html',{"message":message,
+                                             "profiles":profiles,
                                              "user":current_user,
                                              "username":searched_name})
     else:
         message = "You haven't searched for any user"
-        return render(request,'images/search.html',{"message":message})
+        return render(request,'images/search_profile.html',{"message":message})
 
 
 
