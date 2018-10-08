@@ -58,9 +58,9 @@ def profile(request, username):
         profile_info = Profile.get_profile(profile.id)
     except:
         profile_info = Profile.filter_by_id(profile.id)
-    images = Post.get_profile_image(profile.id)
+    posts = Post.get_profile_image(profile.id)
     title = f'@{profile.username}'
-    return render(request, 'images/profile.html', {'title':title, 'profile':profile, 'profile_info':profile_info, 'images':images})
+    return render(request, 'images/profile.html', {'title':title, 'profile':profile, 'profile_info':profile_info, 'posts':posts})
 
 
 @login_required(login_url='/accounts/login/')
@@ -89,6 +89,28 @@ def search(request):
     else:
         message = 'Enter term to search'
         return render(request, 'images/search_profile.html', {'message':message})
+
+
+
+
+
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+    current_user = request.user
+    profile = Profile.get_profile()
+    if 'username' in request.GET and request.GET["username"]:
+        search_term = request.GET.get("username")
+        searched_name = Profile.find_profile(search_term)
+        message = search_term
+
+        return render(request,'images/search.html',{"message":message,
+                                             "profiles":profile,
+                                             "user":current_user,
+                                             "username":searched_name})
+    else:
+        message = "You haven't searched for any user"
+        return render(request,'images/search.html',{"message":message})
+
 
 
 def like(request,operation,pk):
