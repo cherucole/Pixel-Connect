@@ -3,66 +3,60 @@ from .models import *
 
 # Create your tests here.
 
-class ImageTest(TestCase):
-
-    def setUp(self):
-        self.user = User.objects.create(id = 1, username='cherucole')
-        self.profile = Profile.objects.create(name = self.user,bio = 'sample bio')
-        self.image = Post.objects.create(image_name = 'myImage',
-                                          id = 1,
-                                          image_caption ='caption',
-                                          profile = self.profile)
-
-    def test_instance(self):
-        self.assertTrue(isinstance(self.image,Post))
-
-    def test_delete(self):
-        self.image.save()
-        self.image.delete()
-        self.assertTrue(len(Post.objects.all()) == 0)
-
-    def test_get_image(self):
-        self.image.save()
-        image = Post.get_image(1)
-        self.assertTrue(len(image) == 1)
-
-    def test_get_post(self):
-        self.image.save()
-        image = Post.get_post('a')
-        self.assertTrue(len(image) == 1)
-
 class ProfileTest(TestCase):
 
     def setUp(self):
-        self.user = User.objects.create(id = 1, username='cherucole')
-        self.profile = Profile.objects.create(name = self.user,bio = 'sample_bio')
+        self.user = User.objects.create(id = 1, username='zyzu')
+        self.profile = Profile.objects.create(user = self.user,bio = 'blow away')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.profile,Profile))
 
+    def test_save_profile(self):
+        self.assertTrue(isinstance(self.profile,Profile))
+
     def test_get_profile(self):
         self.profile.save()
-        profile = Profile.get_profile('a')
-        self.assertTrue(len(profile)== 1)
+        profile = Profile.get_profile()
+        self.assertTrue(len(profile) > 0)
 
-    def test_delete(self):
+    def test_find_profile(self):
         self.profile.save()
-        self.profile.delete()
-        self.assertTrue(len(Profile.objects.all()) == 0)
+        profile = Profile.find_profile('zyzu')
+        self.assertTrue(len(profile) > 0)
 
-    def test_search_profile(self):
-        self.profile.save()
-        profile = Profile.search_profile('a')
-        self.assertTrue(len(profile)== 1)
-
-class likesTest(TestCase):
+class ImageTest(TestCase):
 
     def setUp(self):
-        self.likes = Like.objects.create(likes=1)
+        self.user = User.objects.create(id = 1, username='zyzu')
+        self.profile = Profile.objects.create(user = self.user,bio = 'blow away')
+
+        self.image = Post.objects.create(user_profile = self.user,
+                                          profile = self.profile,
+                                          caption ='turn up',
+                                          likes = 0)
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.likes,Like))
+        self.assertTrue(isinstance(self.image,Post))
 
+    def test_get_images(self):
+        self.image.save()
+        image = Post.get_images()
+        self.assertTrue(len(image) == 1)
 
+class CommentTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create(id = 1, username='zyzu')
 
+        self.comment= Comment.objects.create(poster= self.user, comment='new comment' )
 
+    def test_instance(self):
+        self.assertTrue(isinstance(self.comment, Comment))
+
+    def test_save_comment(self):
+        self.assertTrue(isinstance(self.comment,Comment))
+
+    def test_get_comments(self):
+        self.comment.save()
+        comment = Comment.get_comments()
+        self.assertTrue(len(comment) == 1)
