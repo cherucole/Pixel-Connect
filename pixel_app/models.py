@@ -3,14 +3,12 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 import datetime as dt
 
-
 # Create your models here.
 
 class Profile(models.Model):
     bio = HTMLField()
     avatar = models.ImageField(upload_to='images/', blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
-
 
     def save_profile(self):
         self.save()
@@ -21,7 +19,7 @@ class Profile(models.Model):
         return profile
 
     @classmethod
-    def get_all_profile(cls):
+    def get_all_profiles(cls):
         profile = Profile.objects.all()
         return profile
 
@@ -39,10 +37,8 @@ class Profile(models.Model):
         ordering = ['user']
 
 
-
 class Post(models.Model):
     image = models.ImageField(upload_to='images/', blank=True)
-    # name = models.CharField(max_length=30)
     caption = HTMLField(blank=True)
     likes=models.IntegerField(default=0)
     profile=models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
@@ -54,11 +50,6 @@ class Post(models.Model):
         post=Post.objects.filter(id=id)
         return post
 
-
-    @classmethod
-    def get_post_by_id(cls,id):
-        post = Post.objects.filter(id = Post.id)
-        return post
 
     @classmethod
     def all_posts(cls):
@@ -79,12 +70,11 @@ class Post(models.Model):
     def get_post_by_id(cls,id):
         post = Post.objects.filter(id = Post.id)
         return post
-    #
-    # @classmethod
-    # def get_post_by_id(cls, id):
-    #     post = Post.objects.filter(id = Post.id)
-    #     return post
 
+    @classmethod
+    def get_all_profiles(cls):
+        profile = Profile.objects.all()
+        return profile
 
 class Comment(models.Model):
     comment = models.CharField(max_length=30, blank=True)
@@ -93,7 +83,6 @@ class Comment(models.Model):
 
     def save_comment(self):
         self.save()
-
 
     @classmethod
     def get_comments(cls, id):

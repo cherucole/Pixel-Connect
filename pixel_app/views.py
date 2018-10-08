@@ -14,56 +14,27 @@ from .email import *
 def homepage(request):
 
     posts = Post.all_posts()
-    profile = Profile.get_all_profile()
-
-    # post = Post.one_image(id)
+    profile = Profile.get_all_profiles()
     comments=Comment.objects.all()
     current_user = request.user
-    # post_test=posts
-
     if request.method == 'POST':
         form = CommentForm(request.POST, request.FILES)
 
         if form.is_valid():
-            # for post in posts:
-
             comment = form.save(commit=False)
             comment.user = current_user
             comment.save()
         return redirect('homepage')
 
     else:
-        form = CommentForm()
-
-
-    form=CommentForm
+        form=CommentForm
     context =  {
         "profile": profile,
         "form": form,
         "posts":posts ,
         "comments":comments,
-        # "post_test":post_test
     }
     return render(request, 'images/homepage.html', context)
-
-#
-# @login_required
-# def profile(request,profile_id):
-#
-#     profile = User.objects.get(pk = profile_id)
-#     posts = Post.objects.filter(profile_id=profile).all()
-#
-#     return render(request,"profile.html",{"profile":profile,"posts":posts})
-
-# @login_required
-# def my_profile(request):
-#
-#     profile = request.user
-#
-#     posts = Post.objects.filter(user_profile_id=profile).all()
-#
-#     return render(request,"images/my_profile.html",{"profile":profile,"posts":posts})
-
 
 def like_post(request, id):
 
@@ -84,7 +55,6 @@ def upload_image(request):
     else:
         form = UploadForm()
     return render(request, 'images/upload.html', {"form": form})
-
 
 
 def profile(request, username):
