@@ -12,7 +12,6 @@ from .email import *
 
 @login_required(login_url='/accounts/login/')
 def homepage(request):
-
     posts = Post.all_posts()
     profile = Profile.get_all_profiles()
     comments=Comment.objects.all()
@@ -35,10 +34,6 @@ def homepage(request):
         "comments":comments,
     }
     return render(request, 'images/homepage.html', context)
-
-def like_post(request, id):
-
-    return render(request, )
 
 
 @login_required(login_url='/accounts/login/')

@@ -37,7 +37,7 @@
       <p>{{image.caption | safe}}</p>
             <p>{{image.likes | safe}} likes</p>
       {% for comment in image.comments.all %}
-          <p>{{comment.user}} : {{comment.comment}}</p>
+          <p>{{comment.poster}} : {{comment.comment}}</p>
 
 {% empty %}
     <p>No comments here yet :(</p>
