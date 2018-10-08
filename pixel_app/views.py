@@ -58,9 +58,9 @@ def profile(request, username):
         profile_info = Profile.get_profile(profile.id)
     except:
         profile_info = Profile.filter_by_id(profile.id)
-    posts = Post.get_profile_image(profile.id)
+    images = Post.get_profile_image(profile.id)
     title = f'@{profile.username}'
-    return render(request, 'images/profile.html', {'title':title, 'profile':profile, 'profile_info':profile_info, 'posts':posts})
+    return render(request, 'images/profile.html', {'title':title, 'profile':profile, 'profile_info':profile_info, 'images':images})
 
 
 @login_required(login_url='/accounts/login/')
