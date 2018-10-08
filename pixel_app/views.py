@@ -82,16 +82,15 @@ def add_profile(request):
 @login_required(login_url='/accounts/login/')
 def search_results(request):
     current_user = request.user
-    profiles = Profile.get_all_profiles()
     if 'username' in request.GET and request.GET["username"]:
         search_term = request.GET.get("username")
-        searched_name = Profile.find_profile(search_term)
+        profiles = Profile.find_profile(search_term)
         message = search_term
 
         return render(request,'images/search_profile.html',{"message":message,
                                              "profiles":profiles,
                                              "user":current_user,
-                                             "username":searched_name})
+                                             "username":profiles})
     else:
         message = "You haven't searched for any user"
         return render(request,'images/search_profile.html',{"message":message})
