@@ -14,6 +14,8 @@ from .email import *
 def homepage(request):
 
     posts = Post.all_posts()
+    profile = Profile.get_all_profile()
+
     # post = Post.one_image(id)
     comments=Comment.objects.all()
     current_user = request.user
@@ -36,6 +38,7 @@ def homepage(request):
 
     form=CommentForm
     context =  {
+        "profile": profile,
         "form": form,
         "posts":posts ,
         "comments":comments,
@@ -43,23 +46,23 @@ def homepage(request):
     }
     return render(request, 'images/homepage.html', context)
 
+#
+# @login_required
+# def profile(request,profile_id):
+#
+#     profile = User.objects.get(pk = profile_id)
+#     posts = Post.objects.filter(profile_id=profile).all()
+#
+#     return render(request,"profile.html",{"profile":profile,"posts":posts})
 
-@login_required
-def profile(request,profile_id):
-
-    profile = User.objects.get(pk = profile_id)
-    posts = Post.objects.filter(profile_id=profile).all()
-
-    return render(request,"profile.html",{"profile":profile,"posts":posts})
-
-@login_required
-def my_profile(request):
-
-    profile = request.user
-
-    posts = Post.objects.filter(user_profile_id=profile).all()
-
-    return render(request,"images/my_profile.html",{"profile":profile,"posts":posts})
+# @login_required
+# def my_profile(request):
+#
+#     profile = request.user
+#
+#     posts = Post.objects.filter(user_profile_id=profile).all()
+#
+#     return render(request,"images/my_profile.html",{"profile":profile,"posts":posts})
 
 
 def like_post(request, id):

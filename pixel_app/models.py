@@ -11,8 +11,6 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to='images/', blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
 
-    def __str__(self):
-        return self.user
 
     def save_profile(self):
         self.save()
@@ -20,6 +18,11 @@ class Profile(models.Model):
     @classmethod
     def get_profile(cls, id):
         profile = Profile.objects.get(user=id)
+        return profile
+
+    @classmethod
+    def get_all_profile(cls):
+        profile = Profile.objects.all()
         return profile
 
     @classmethod
@@ -42,6 +45,7 @@ class Post(models.Model):
     # name = models.CharField(max_length=30)
     caption = HTMLField(blank=True)
     likes=models.IntegerField(default=0)
+    profile=models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     user_profile = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts',blank=True)
     date = models.DateTimeField(auto_now_add=True)
 

@@ -12,7 +12,7 @@
         <div class="card border-secondary">
       <img class="rounded-circle img-responsive" width="170" height="170" src="{{user.profile.avatar.url}}" size="">
     <div class="card-footer">
-      <p>{{profile.profile.user}}</p>
+      <p>{{profile_info.user}}</p>
       <p>{{profile_info.bio | safe}}</p>
       </div>
     </div>
@@ -20,53 +20,29 @@
   </div>
 
   <div class="col-lg-8 col-md-10 mx-auto">
-
-
-
-
-
   <div class="card-columns " >
       <div class="card border-light"  >
       {% for image in posts %}
-
-      {{post_test.id}}
-
 
                   <div class="header"><img class="img-circle" src="{{image.user_profile.avater.url}}">
             </div>
 
   <div class="card border-secondary" style="width:240%;">
-                  <!--<p>{{image.user_profile.username | safe}} </p>-->
     <a href="{% url 'profile' username=image.user_profile.username %}">
     <label>{{image.user_profile.username}}</label></a>
 
-
-                        <!--<p>{{image.comments.all}} </p>-->
-
-
-
     <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
 <hr>
-       <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i class="far fa-heart fa-2x ml-4"></i></a>
+      <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i class="far fa-heart fa-2x ml-4"></i></a>
       <p>{{image.caption | safe}}</p>
             <p>{{image.likes | safe}} likes</p>
-
-
-
       {% for comment in image.comments.all %}
-
-
           <p>{{comment.user}} : {{comment.comment}}</p>
 
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
-
-
-
   </div>
-
-
       {% empty %}
   <div class="row">
     <h2 class="text-center">There is no images here</h2>

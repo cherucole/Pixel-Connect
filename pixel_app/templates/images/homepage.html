@@ -44,11 +44,10 @@
       <div class="card border-light"  >
       {% for image in posts %}
 
-      {{post_test.id}}
 
-
-                  <div class="header"><img class="img-circle" src="{{image.user_profile.avater.url}}">
+        <div class="card-header"><img class="img-fluid rounded-circle" src="{{image.profile.avatar.url}}" style="height:40px;margin-top:5px;margin-bottom:5px;">
             </div>
+          {{image.profile.bio}}
 
   <div class="card border-secondary" style="width:240%;">
                   <!--<p>{{image.user_profile.username | safe}} </p>-->
@@ -57,8 +56,7 @@
     <label>{{image.user_profile.username}}</label></a>
 
 
-                        <!--<p>{{image.comments.all}} </p>-->
-
+<img class="img-circle" src="{{image.profile.avatar.url}}">
 
 
     <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
