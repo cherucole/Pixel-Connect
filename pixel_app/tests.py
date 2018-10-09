@@ -15,9 +15,9 @@ class ProfileTest(TestCase):
     def test_save_profile(self):
         self.assertTrue(isinstance(self.profile,Profile))
 
-    def test_get_profile(self):
+    def test_get_all_profiles(self):
         self.profile.save()
-        profile = Profile.get_profile()
+        profile = Profile.get_all_profiles()
         self.assertTrue(len(profile) > 0)
 
     def test_find_profile(self):
@@ -39,10 +39,10 @@ class ImageTest(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.image,Post))
 
-    def test_get_images(self):
+    def test_all_posts(self):
         self.image.save()
-        image = Post.get_images()
-        self.assertTrue(len(image) == 1)
+        image = Post.all_posts()
+        self.assertTrue(len(image) > 0)
 
 class CommentTest(TestCase):
     def setUp(self):
@@ -56,7 +56,7 @@ class CommentTest(TestCase):
     def test_save_comment(self):
         self.assertTrue(isinstance(self.comment,Comment))
 
-    def test_get_comments(self):
+    def test_get_all_comments(self):
         self.comment.save()
-        comment = Comment.get_comments()
-        self.assertTrue(len(comment) == 1)
+        comment = Comment.get_all_comments()
+        self.assertTrue(len(comment) > 0)
