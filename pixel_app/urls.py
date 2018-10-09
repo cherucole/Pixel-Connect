@@ -14,7 +14,7 @@ urlpatterns=[
     url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
     url(r'^comment/(?P<pk>\d+)',views.add_comment,name='comment'),
     url(r'^new/profile$', views.add_profile, name='add_profile'),
-
+    url(r'^follow/(?P<operation>.+)/(?P<id>\d+)', views.follow, name='follow'),
 
 ]
 if settings.DEBUG:

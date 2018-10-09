@@ -14,6 +14,10 @@
     <div class="card-footer">
       <p>{{profile_info.user}}</p>
       <p>{{profile_info.bio | safe}}</p>
+                <p>{{images | length }} posts</p>
+        <p>{{profile_info.user.follow.all |length }} Followers</p>
+
+
       </div>
     </div>
 

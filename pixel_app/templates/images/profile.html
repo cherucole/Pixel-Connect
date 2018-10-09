@@ -12,9 +12,26 @@
 
         <div class="card border-secondary">
       <img class="rounded-circle img-responsive" width="170" height="170" src="{{profile_info.avatar.url}}" size="">
+
+                {% if unfollow %}
+                <a href='/follow/unfollow/{{profile_info.user.id}}/'>{{unfollow}} Unfollow</a>
+                {% elif follow %}
+
+                <a href='/follow/follow/{{profile_info.user.id}}/'><button class='btn'>{{follow}} Follow</button></a>
+                {% endif %}
+                <a href='/follow/follow/{{profile_info.user.id}}/'><button class='btn'>{{follow}} Follow</button></a>
+                <a href='/follow/unfollow/{{profile_info.user.id}}/'><button class='btn'>{{unfollow}} Unfollow</button></a>
+
+
     <div class="card-footer">
       <p>{{profile_info.user}}</p>
       <p>{{profile_info.bio | safe}}</p>
+        <p>{{images | length }} posts</p>
+        <p>{{profile_info.user.follow.all |length }} Followers</p>
+
+
+
+
       </div>
     </div>
 
@@ -33,6 +50,9 @@
   <div class="card border-secondary" style="width:240%;">
     <a href="{% url 'profile' username=image.user_profile.username %}">
     <label>{{image.user_profile.username}}</label></a>
+
+
+
 
 
     <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">

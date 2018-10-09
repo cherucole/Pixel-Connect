@@ -124,3 +124,11 @@ def add_comment(request,pk):
         form = CommentForm()
         return render(request,'comment.html',{"user":current_user,"comment_form":form})
 
+def follow(request,operation,id):
+    user=User.objects.get(id=id)
+    if operation=='follow':
+        Follow.follow(request.user,user)
+        return redirect('homepage')
+    elif operation=='unfollow':
+        Follow.unfollow(request.user,user)
+        return redirect('homepage')
