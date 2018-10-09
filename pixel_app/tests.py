@@ -6,7 +6,7 @@ from .models import *
 class ProfileTest(TestCase):
 
     def setUp(self):
-        self.user = User.objects.create(id = 1, username='zyzu')
+        self.user = User.objects.create(id = 1, username='cheru')
         self.profile = Profile.objects.create(user = self.user,bio = 'blow away')
 
     def test_instance(self):
@@ -22,18 +22,18 @@ class ProfileTest(TestCase):
 
     def test_find_profile(self):
         self.profile.save()
-        profile = Profile.find_profile('zyzu')
+        profile = Profile.find_profile('cheru')
         self.assertTrue(len(profile) > 0)
 
 class ImageTest(TestCase):
 
     def setUp(self):
-        self.user = User.objects.create(id = 1, username='zyzu')
-        self.profile = Profile.objects.create(user = self.user,bio = 'blow away')
+        self.user = User.objects.create(id = 1, username='cheru')
+        self.profile = Profile.objects.create(user = self.user,bio = 'my sample bio')
 
         self.image = Post.objects.create(user_profile = self.user,
                                           profile = self.profile,
-                                          caption ='turn up',
+                                          caption ='this is it!',
                                           likes = 0)
 
     def test_instance(self):
@@ -46,7 +46,7 @@ class ImageTest(TestCase):
 
 class CommentTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create(id = 1, username='zyzu')
+        self.user = User.objects.create(id = 1, username='cheru')
 
         self.comment= Comment.objects.create(poster= self.user, comment='new comment' )
 
