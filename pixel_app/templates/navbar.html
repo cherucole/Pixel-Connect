@@ -28,11 +28,12 @@
 </li>
 
       <li>
-            <a href="{% url 'add_profile' %}"> <button class="btn btn-lg btn-link">Add Profile</button></a>
+                                      <a href="{% url 'add_profile' %}"> <img src="https://image.flaticon.com/icons/png/512/184/184312.png" width="45px" height="45px" alt="INSTAGRAM" style="color:black;">Add Profile</a>
+
 
       </li>
       <li>
-            <a href="{% url 'upload' %}"> <button class="btn btn-lg btn-link">Upload </button></a>
+                            <a href="{% url 'upload' %}"> <img src="https://static.thenounproject.com/png/809337-200.png" width="45px" height="45px" style="margin-right:2em;margin-left:1.5em;" alt="INSTAGRAM" style="color:black;"></a>
 
 
       </li>
@@ -41,23 +42,20 @@
 
 
 
-          <li>
-
-            <a href="{% url 'my_profile'  username=user%}"> <button class="btn btn-lg btn-link">My Profile </button></a>
 
 
-      </li>
-            <li>
-            <a href="/logout"> <button class="btn btn-lg btn-link">Logout </button></a>
-
-
-      </li>
-
-    </ul>
     <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search' %}" method="get">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="username">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+            </ul>
+
+
+                  <a href="{% url 'my_profile' username=user %}"> <img src="https://dumielauxepices.net/sites/default/files/person-icons-android-712078-6629135.png" width="45px" height="45px" alt="INSTAGRAM" style="color:black;">{{user.username}}</a>
+
+                                  <a href="/logout"> <img src="https://www.shareicon.net/download/2015/10/17/657490_arrow.svg" width="45px" height="45px" style="margin-right:2em;margin-left:1.5em;" alt="INSTAGRAM" style="color:black;"></a>
+
+
   </div>
 </nav>
 
