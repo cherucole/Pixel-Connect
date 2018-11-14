@@ -2,40 +2,44 @@
 {% load static%}
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 
   <meta charset="utf-8">
 
   {% if title %}
   <title>Pixel-Connect - {{title}}</title>
   {% else %}
-    <title> Pixel-Connect </title>
+  <title> Pixel-Connect </title>
   {% endif %}
 
   {% block styles %}
-    {% bootstrap_css %}
+  {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/images.css' %}">
   {% endblock %}
 
 </head>
+
 <body>
-{% include 'navbar.html' %}
+  {% include 'navbar.html' %}
 
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
 
-{% block content %}
+  {% block content %}
 
 
-{% endblock %}
+  {% endblock %}
 
-    {% block scripts %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     {% bootstrap_javascript %}
-    {% endblock %}
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %}
+  {% endblock %}
 </body>
+
 </html>

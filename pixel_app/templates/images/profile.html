@@ -6,103 +6,110 @@
 <br>
 <div class="container">
 
-  <div class="row">
+    <div class="row">
 
-  <div class="col-md-4">
+        <div class="col-md-4">
 
-        <div class="card border-secondary">
+            <div class="card border-secondary">
                 <div class="card-footer">
 
-      <img class="rounded-circle img-responsive" width="170" height="170" src="{{profile_info.avatar.url}}" size="">
+                    <img class="rounded-circle img-responsive" width="170" height="170" src="{{profile_info.avatar.url}}"
+                        size="">
                     <br>
 
-                {% if unfollow %}
-                <a href='/follow/unfollow/{{profile_info.user.id}}/'>{{unfollow}} Unfollow</a>
-                {% elif follow %}
+                    {% if unfollow %}
+                    <a href='/follow/unfollow/{{profile_info.user.id}}/'>{{unfollow}} Unfollow</a>
+                    {% elif follow %}
 
-                <a href='/follow/follow/{{profile_info.user.id}}/'><button class='btn btn-lg btn-success btn-sm'>{{follow}} Follow</button></a>
-                {% endif %}
-                             <br>
+                    <a href='/follow/follow/{{profile_info.user.id}}/'><button class='btn btn-lg btn-success btn-sm'>{{follow}}
+                            Follow</button></a>
+                    {% endif %}
+                    <br>
 
-                          <p style="width:100%; padding-left:6px;">{{profile_info.user | upper}}</p>
+                    <p style="width:100%; padding-left:6px;">{{profile_info.user | upper}}</p>
 
-            <div style="width:100%; padding-left:20px;" class="row">
-
-
-
-                <a href='/follow/follow/{{profile_info.user.id}}/'><button style="margin-right:20px;" class='btn btn-outline-primary btn-sm'>{{follow}} Follow</button></a>
-                <a href='/follow/unfollow/{{profile_info.user.id}}/'><button class='btn btn-outline-danger btn-sm'>{{unfollow}} Unfollow</button></a>
-
-            </div>
-                                <div style="width:100%; padding-left:20px;padding-top:10px;" class="row">
+                    <div style="width:100%; padding-left:20px;" class="row">
 
 
 
-                 <p>{{images | length }} posts</p>         <p style="padding-left:15px;">{{profile_info.user.follow.all |length }} Followers</p>
+                        <a href='/follow/follow/{{profile_info.user.id}}/'><button style="margin-right:20px;" class='btn btn-outline-primary btn-sm'>{{follow}}
+                                Follow</button></a>
+                        <a href='/follow/unfollow/{{profile_info.user.id}}/'><button class='btn btn-outline-danger btn-sm'>{{unfollow}}
+                                Unfollow</button></a>
 
- <p style="padding-left:15px;">{{profile_info.user.c_user.all |length }} Following</p>
-      <p style="margin-top:0px;">{{profile_info.bio | safe}}</p>
-
-            </div>
-
-
-
-      </div>
-    </div>
-
-  </div>
-
-  <div class="col-lg-8 col-md-10 mx-auto">
+                    </div>
+                    <div style="width:100%; padding-left:20px;padding-top:10px;" class="row">
 
 
-  <div class="card-columns " >
-      <div class="card border-light"  >
-      {% for image in images %}
 
-                  <div class="header"><img class="img-circle" src="{{image.user_profile.avater.url}}">
+                        <p>{{images | length }} posts</p>
+                        <p style="padding-left:15px;">{{profile_info.user.follow.all |length }} Followers</p>
+
+                        <p style="padding-left:15px;">{{profile_info.user.c_user.all |length }} Following</p>
+                        <p style="margin-top:0px;">{{profile_info.bio | safe}}</p>
+
+                    </div>
+
+
+
+                </div>
             </div>
 
-  <div class="card border-secondary" style="width:240%;">
-    <a href="{% url 'profile' username=image.user_profile.username %}">
-    <label>{{image.user_profile.username}}</label></a>
+        </div>
+
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+
+            <div class="card-columns ">
+                <div class="card border-light">
+                    {% for image in images %}
+
+                    <div class="header"><img class="img-circle" src="{{image.user_profile.avater.url}}">
+                    </div>
+
+                    <div class="card border-secondary" style="width:240%;">
+                        <a href="{% url 'profile' username=image.user_profile.username %}">
+                            <label>{{image.user_profile.username}}</label></a>
 
 
 
 
 
-    <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
-<hr>
-       <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i class="far fa-heart fa-2x ml-4"></i></a>
-<div style="width:100%; padding-left:20px;">
-  <p style="width:100%; padding-left:20px;">{{image.caption | safe}}</p>
+                        <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200"
+                            type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
+                        <hr>
+                        <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:inherit;"><i
+                                class="far fa-heart fa-2x ml-4"></i></a>
+                        <div style="width:100%; padding-left:20px;">
+                            <p style="width:100%; padding-left:20px;">{{image.caption | safe}}</p>
 
-</div>
+                        </div>
 
-            <p style="width:100%; padding-left:20px;">{{image.likes | safe}} likes</p>
-        {% for comment in image.comments.all %}
-
-
-                  <p style="width:100%; padding-left:20px;">{{comment.poster}} : {{comment.comment}}</p>
-
-        {% empty %}
-            <p style="width:100%; padding-left:20px;">No comments here yet :(</p>
-        {% endfor %}
+                        <p style="width:100%; padding-left:20px;">{{image.likes | safe}} likes</p>
+                        {% for comment in image.comments.all %}
 
 
+                        <p style="width:100%; padding-left:20px;">{{comment.poster}} : {{comment.comment}}</p>
+
+                        {% empty %}
+                        <p style="width:100%; padding-left:20px;">No comments here yet :(</p>
+                        {% endfor %}
 
 
-  </div>
 
 
-      {% empty %}
-  <div class="row">
-    <h2 class="text-center">There is no images here</h2>
-  </div>
-      {% endfor %}
-          </div>
+                    </div>
 
-  </div>
-    </div>
+
+                    {% empty %}
+                    <div class="row">
+                        <h2 class="text-center">There is no images here</h2>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 

@@ -7,7 +7,8 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/images.css' %}">
 
@@ -18,62 +19,63 @@
 </head>
 
 <body>
-<div class="container-fluid">
-  <h1 id="mainheading" style="text-align:center; color:#0d47a1" class="display-4"> Pixel Connect</h1>
+  <div class="container-fluid">
+    <h1 id="mainheading" style="text-align:center; color:#0d47a1" class="display-4"> Pixel Connect</h1>
 
-  <div class="row">
+    <div class="row">
 
-    <div class="col-md-3"></div>
+      <div class="col-md-3"></div>
 
-    <div class="col-md-8" style="width:100%;">
-      {% for image in posts%}
-      <div class="card border-secondary" style="width:70%;">
-        <a style="width:100%; padding-left:20px;" href="{% url 'profile' username=image.user_profile.username %}">
+      <div class="col-md-8" style="width:100%;">
+        {% for image in posts%}
+        <div class="card border-secondary" style="width:70%;">
+          <a style="width:100%; padding-left:20px;" href="{% url 'profile' username=image.user_profile.username %}">
 
-        <label>{{image.user_profile.username}}</label></a>
-        <img src="{{image.image.url}}" alt=""  class="card-img-top img-responsive" alt="Image" style="height:600px;width:100%;">
+            <label>{{image.user_profile.username}}</label></a>
+          <img src="{{image.image.url}}" alt="" class="card-img-top img-responsive" alt="Image" style="height:600px;width:100%;">
+          <br>
+
+          <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:red;"><i class="far fa-heart fa-2x ml-4"></i></a>
+          <div style="width:100%; padding-left:20px;">
+            <p style="width:100%; padding-left:20px;">{{image.caption | safe}}</p>
+
+          </div>
+
+          <p style="width:100%; padding-left:20px;">{{image.likes | safe}} likes</p>
+          {% for comment in image.comments.all %}
+
+
+          <p style="width:100%; padding-left:20px;">{{comment.poster}} : {{comment.comment}}</p>
+
+          {% empty %}
+          <p style="width:100%; padding-left:20px;">No comments here yet :(</p>
+          {% endfor %}
+
+
+          {{form.media}}
+
+          <form style="width:100%; padding-left:20px;padding-right:20px;" action="{%url 'comment' pk=image.id%}" method="post"
+            enctype="multipart/form-data">
+            {%csrf_token%}
+
+            {% bootstrap_form form%}
+
+          </form>
+
+          {% block scripts %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+          {% bootstrap_javascript %}
+          {% endblock %}
+        </div>
         <br>
+        {% endfor%}
 
-        <a id="like" href="{% url 'like' operation='like' pk=image.id%}" style="color:red;"><i class="far fa-heart fa-2x ml-4"></i></a>
-<div style="width:100%; padding-left:20px;">
-  <p style="width:100%; padding-left:20px;">{{image.caption | safe}}</p>
-
-</div>
-
-            <p style="width:100%; padding-left:20px;">{{image.likes | safe}} likes</p>
-        {% for comment in image.comments.all %}
-
-
-                  <p style="width:100%; padding-left:20px;">{{comment.poster}} : {{comment.comment}}</p>
-
-        {% empty %}
-            <p style="width:100%; padding-left:20px;">No comments here yet :(</p>
-        {% endfor %}
-
-
-                    {{form.media}}
-
-                    <form style="width:100%; padding-left:20px;padding-right:20px;" action="{%url 'comment' pk=image.id%}" method="post" enctype="multipart/form-data">
-                      {%csrf_token%}
-
-                      {% bootstrap_form form%}
-
-                    </form>
-
-               {% block scripts %}
-              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-              {% bootstrap_javascript %}
-            {% endblock %}
       </div>
-      <br>
-      {% endfor%}
 
     </div>
 
   </div>
-
-</div>
 </body>
 
 </html>

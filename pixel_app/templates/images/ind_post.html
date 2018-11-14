@@ -4,37 +4,38 @@
 {{ block.super}}
 
 <div class="card-columns">
-      {% for image in posts %}
+    {% for image in posts %}
 
-  <div class="card border-secondary">
-    <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
-<hr>
-      <a class="btn btn-default" href="{% url 'like_post' id=image.id %}"><i class="far fa-heart"></i></a>
-            <a class="btn btn-default" href="{% url 'add_comment' id=image.id %}"><i class="far fa-comment"></i></a>
+    <div class="card border-secondary">
+        <img class="card-img-top" src="{{image.image.url}}" class="img-responsive" alt="Image" size="100px200" type="button"
+            class="btn btn-primary" data-toggle="modal" data-target="#{{image.id}}">
+        <hr>
+        <a class="btn btn-default" href="{% url 'like_post' id=image.id %}"><i class="far fa-heart"></i></a>
+        <a class="btn btn-default" href="{% url 'add_comment' id=image.id %}"><i class="far fa-comment"></i></a>
 
 
-{% for comment in comments %}
-    <div class="comment">
-        <div class="date">{{ comment.created_date }}</div>
-        <strong>{{ comment.author }}</strong>
-        <p>{{ comment.text|linebreaks }}</p>
+        {% for comment in comments %}
+        <div class="comment">
+            <div class="date">{{ comment.created_date }}</div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+        {% empty %}
+        <p>No comments here yet :(</p>
+        {% endfor %}
     </div>
-{% empty %}
-    <p>No comments here yet :(</p>
-{% endfor %}
-  </div>
 
 
-{% for comment in post.comments.all %}
+    {% for comment in post.comments.all %}
     <div class="comment">
         <div class="date">{{ comment.post_id }}</div>
         <strong>{{ comment.user_id }} comment</strong>
         <p>{{ comment.comment|linebreaks }}</p>
     </div>
-{% empty %}
+    {% empty %}
     <p>No comments here yet :(</p>
-{% endfor %}
+    {% endfor %}
     {% endfor %}
 
 
-{% endblock %}
+    {% endblock %}
